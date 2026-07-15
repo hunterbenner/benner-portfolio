@@ -1,0 +1,1 @@
+GitHub does not upload empty folders so this file is here to keep the assets folder visible in the repository.

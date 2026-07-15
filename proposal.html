@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!--
+    Student Name: Hunter Benner
+    File Name: proposal.html
+    Date: 06/29/2026
+    Description: This is my portfolio proposal page. It explains the purpose
+                 of my website, who it is for, and what I researched about
+                 building a portfolio to get a job in software development.
+                 This page is not linked in the navigation menu.
+-->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Proposal - Hunter Benner</title>
+
+    <style>
+
+        /* This resets default browser spacing so everything looks consistent */
+        body, h1, h2, p, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sets the overall page background and font */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #222222;
+        }
+
+        /* The top banner of the page with my name and title */
+        header {
+            background-color: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        /* Adds space below the main heading in the header */
+        header h1 {
+            margin-bottom: 8px;
+        }
+
+        /* Centers the main content and limits how wide it gets */
+        main {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Each white card/box on the page.
+           NOTE: I used section instead of div because section is an HTML5
+           semantic element - it tells the browser what the content IS,
+           not just how it looks. If teacher asks, that is why. */
+        section {
+            background-color: white;
+            padding: 25px 30px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+
+        /* The heading inside each section */
+        section h2 {
+            color: #0f3460;
+            margin-bottom: 12px;
+        }
+
+        /* Adds space between paragraphs */
+        p {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+
+        /* Indents the bullet point lists */
+        ul {
+            padding-left: 20px;
+        }
+
+        /* Adds spacing between each bullet point */
+        ul li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        /* The blue box that holds my sources/citations */
+        .sources {
+            background-color: #eef2ff;
+            border-left: 4px solid #0f3460;
+            padding: 15px 20px;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        /* The bottom footer bar */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85em;
+            color: #777777;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- This is the top section of the page with my name -->
+    <header>
+        <h1>Portfolio Website Proposal</h1>
+        <p>Hunter Benner &mdash; CTS1831C Web Design</p>
+    </header>
+
+    <!-- This is where all the main content goes -->
+    <main>
+
+        <!-- Section 1: What is the website for -->
+        <section>
+            <h2>Website Purpose</h2>
+            <p>
+                The purpose of this portfolio website is to show employers and recruiters what I can do
+                as a software developer. Instead of just handing in a resume, this site lets me show
+                actual projects I have built, list my skills, and make it easy for someone to contact me.
+                It will be my main online presence when I start looking for jobs.
+            </p>
+        </section>
+
+        <!-- Section 2: Who will visit the site -->
+        <section>
+            <h2>Target Audience</h2>
+            <p>The people I am building this site for are:</p>
+            <ul>
+                <li>Employers and hiring managers looking for software developers</li>
+                <li>Recruiters searching for entry-level candidates</li>
+                <li>Clients who need a developer for freelance projects</li>
+                <li>Other developers interested in collaborating</li>
+            </ul>
+        </section>
+
+        <!-- Section 3: What I want to do with my career -->
+        <section>
+            <h2>Career Goals</h2>
+            <p>
+                My goal is to get a job as a junior software developer after I finish my degree.
+                I am most interested in front-end and full-stack web development. Down the road
+                I want to grow into a senior developer role and work on projects that actually
+                make a difference. This portfolio is how I start putting myself out there.
+            </p>
+        </section>
+
+        <!-- Section 4: The pages my site will have -->
+        <section>
+            <h2>Site Plan</h2>
+            <p>My website will have at least five pages:</p>
+            <ul>
+                <li><strong>Home (index.html)</strong> - Introduction and a quick summary about me</li>
+                <li><strong>Projects (projects.html)</strong> - Projects I have built with descriptions and links</li>
+                <li><strong>Skills (skills.html)</strong> - Programming languages and tools I know how to use</li>
+                <li><strong>Resume (resume.html)</strong> - My work experience, education, and a downloadable resume</li>
+                <li><strong>Contact (contact.html)</strong> - How to reach me, links to GitHub and email</li>
+                <li><strong>Proposal (proposal.html)</strong> - This page, not included in the navigation</li>
+            </ul>
+        </section>
+
+        <!-- Section 5: How the files are organized -->
+        <section>
+            <h2>File Architecture</h2>
+            <p>The root folder is named hunterbenner.github.io and contains these subfolders:</p>
+            <ul>
+                <li><strong>css</strong> - Holds the stylesheet files that control how the site looks</li>
+                <li><strong>assets</strong> - Holds general files like fonts or downloadable documents</li>
+                <li><strong>images</strong> - Holds all the image files used on the site</li>
+                <li><strong>media</strong> - Holds any video or audio files</li>
+                <li><strong>scripts</strong> - Holds JavaScript files that add interactivity</li>
+                <li><strong>js</strong> - Holds additional JavaScript libraries</li>
+            </ul>
+            <p>All folder and file names are lowercase with no spaces or special characters.</p>
+        </section>
+
+        <!-- Section 6: What a portfolio needs based on my research -->
+        <section>
+            <h2>Portfolio Components for Employment</h2>
+            <p>
+                After researching what employers look for, I found that a strong software developer
+                portfolio needs to include these things:
+            </p>
+            <ul>
+                <li><strong>Real projects with live links</strong> - Employers want to see working code, not just a list of things you claim to know</li>
+                <li><strong>Skills section</strong> - A clear list of languages and tools like HTML, CSS, JavaScript, Python, and Git</li>
+                <li><strong>About me section</strong> - A short bio that explains who you are and what kind of work you are looking for</li>
+                <li><strong>Downloadable resume</strong> - A PDF version of your resume that is easy to save and share</li>
+                <li><strong>Contact information</strong> - Email, GitHub link, and a simple contact form so employers can reach you</li>
+                <li><strong>Mobile friendly design</strong> - The site needs to look good on phones and tablets, not just computers</li>
+                <li><strong>Clean professional design</strong> - Simple layout, readable fonts, and consistent colors show that you pay attention to detail</li>
+            </ul>
+        </section>
+
+        <!-- Section 7: Where I got my information from -->
+        <section>
+            <h2>Sources</h2>
+            <div class="sources">
+                <p>
+                    <strong>Source 1:</strong><br>
+                    Mozilla Developer Network. (2024). Getting Started with the Web. MDN Web Docs.<br>
+                    <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web" target="_blank">
+                        https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web
+                    </a>
+                </p>
+                <p>
+                    <strong>Source 2:</strong><br>
+                    W3Schools. (2024). How To Create a Portfolio Website. W3Schools How To.<br>
+                    <a href="https://www.w3schools.com/howto/howto_website_create_portfolio.asp" target="_blank">
+                        https://www.w3schools.com/howto/howto_website_create_portfolio.asp
+                    </a>
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom of the page -->
+    <footer>
+        <p>Hunter Benner &mdash; CTS1831C Web Design &mdash; 2026</p>
+    </footer>
+
+</body>
+
+</html>

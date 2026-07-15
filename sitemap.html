@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+    Student Name: Hunter Benner
+    File Name: sitemap.html
+    Date: 06/29/2026
+-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Map – Hunter Benner Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            color: #1a1a2e;
+        }
+
+        .map {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .node {
+            background-color: #0f3460;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 1em;
+            text-align: center;
+            min-width: 140px;
+        }
+
+        .root {
+            background-color: #1a1a2e;
+            font-size: 1.1em;
+            min-width: 180px;
+        }
+
+        .connector-down {
+            width: 2px;
+            height: 30px;
+            background-color: #333;
+            margin: 0 auto;
+        }
+
+        .children {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .child-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .horizontal-line {
+            height: 2px;
+            background-color: #333;
+            width: calc(100% - 160px);
+            position: absolute;
+            top: 0;
+            left: 80px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Portfolio Site Map – Hunter Benner</h1>
+
+<div class="map">
+
+    <!-- Root -->
+    <div class="node root">Home (index.html)</div>
+    <div class="connector-down"></div>
+
+    <!-- Horizontal bar visual -->
+    <svg width="720" height="40" xmlns="http://www.w3.org/2000/svg">
+        <line x1="360" y1="0" x2="360" y2="20" stroke="#333" stroke-width="2"/>
+        <line x1="80" y1="20" x2="640" y2="20" stroke="#333" stroke-width="2"/>
+        <line x1="80" y1="20" x2="80" y2="40" stroke="#333" stroke-width="2"/>
+        <line x1="220" y1="20" x2="220" y2="40" stroke="#333" stroke-width="2"/>
+        <line x1="360" y1="20" x2="360" y2="40" stroke="#333" stroke-width="2"/>
+        <line x1="500" y1="20" x2="500" y2="40" stroke="#333" stroke-width="2"/>
+        <line x1="640" y1="20" x2="640" y2="40" stroke="#333" stroke-width="2"/>
+    </svg>
+
+    <!-- Children -->
+    <div class="children">
+        <div class="child-col">
+            <div class="node">Projects<br><small>projects.html</small></div>
+        </div>
+        <div class="child-col">
+            <div class="node">Skills<br><small>skills.html</small></div>
+        </div>
+        <div class="child-col">
+            <div class="node">Resume<br><small>resume.html</small></div>
+        </div>
+        <div class="child-col">
+            <div class="node">Contact<br><small>contact.html</small></div>
+        </div>
+        <div class="child-col">
+            <div class="node" style="background-color:#555;">Proposal<br><small>proposal.html</small><br><small style="font-size:0.75em;">(excluded from nav)</small></div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

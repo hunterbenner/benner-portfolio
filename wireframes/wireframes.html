@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Wireframes - Hunter Benner Portfolio</title>
+<style>
+  /* reset default browser spacing */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, Helvetica, sans-serif; background: #ffffff; padding: 24px; }
+
+  /* each wireframe sheet stays hidden until picked in the url */
+  .sheet { display: none; }
+  .sheet.active { display: block; }
+
+  /* big label at the top of each sheet */
+  .sheet-title {
+    font-size: 22px; font-weight: bold; color: #111;
+    border-bottom: 3px solid #0f3460; padding-bottom: 8px; margin-bottom: 6px;
+  }
+  .sheet-sub { font-size: 13px; color: #555; margin-bottom: 16px; }
+
+  /* puts the wireframe and the margin notes side by side */
+  .layout { display: flex; gap: 24px; align-items: flex-start; }
+
+  /* basic wireframe building blocks */
+  /* outer phone or desktop frame */
+  .frame { border: 3px solid #333; background: #fdfdfd; flex-shrink: 0; }
+  .mobile-frame { width: 375px; border-radius: 18px; overflow: hidden; }
+  .desktop-frame { width: 960px; }
+
+  /* gray nav bar across the top of every frame */
+  .wf-bar { background: #d8d8de; border-bottom: 2px solid #333; padding: 10px 12px;
+    display: flex; justify-content: space-between; align-items: center; }
+  .wf-bar .logo { font-weight: bold; font-size: 13px; letter-spacing: 1px; }
+  /* three little lines for the mobile menu icon */
+  .hamburger { width: 26px; }
+  .hamburger div { height: 3px; background: #333; margin: 4px 0; }
+  .navlinks { display: flex; gap: 14px; font-size: 11px; text-transform: uppercase; }
+  .navlinks span { border: 1px solid #888; padding: 3px 8px; background: #eee; }
+  .navlinks span.on { background: #b9c4e6; border-color: #333; font-weight: bold; }
+
+  /* one content region inside a frame */
+  .wf-section { padding: 14px; border-bottom: 1px dashed #aaa; }
+  .wf-section:last-child { border-bottom: none; }
+
+  /* crossed out box that stands in for an image */
+  .imgbox { background: repeating-linear-gradient(45deg,#eee,#eee 8px,#e0e0e0 8px,#e0e0e0 16px);
+    border: 2px solid #999; display: flex; align-items: center; justify-content: center;
+    color: #777; font-size: 11px; position: relative; }
+  .imgbox::before, .imgbox::after { content: ""; position: absolute; background: #bbb; height: 1px; width: 100%; }
+  .imgbox::before { transform: rotate(12deg); } .imgbox::after { transform: rotate(-12deg); }
+  .imgbox span { background: #f5f5f5; padding: 2px 6px; z-index: 1; border: 1px solid #ccc; }
+
+  /* thick bar = heading placeholder, thin bar = body text placeholder */
+  .h-line { background: #9aa4c4; height: 18px; margin-bottom: 8px; border: 1px solid #667; }
+  .h-line.big { height: 26px; }
+  .t-line { background: #e2e2e2; height: 9px; margin-bottom: 6px; border: 1px solid #ccc; }
+  .t-line.short { width: 60%; }
+  /* button placeholder */
+  .btn { border: 2px solid #333; background: #cdd6f0; text-align: center; font-size: 12px;
+    font-weight: bold; padding: 9px 14px; display: inline-block; }
+  .btn.ghost { background: #fff; }
+  .btn.block { display: block; }
+
+  /* white card box, cards-row lines them up in columns */
+  .card { border: 2px solid #888; background: #fff; padding: 10px; }
+  .cards-row { display: flex; gap: 14px; }
+  .cards-row .card { flex: 1; }
+  .stack > * { margin-bottom: 12px; } .stack > *:last-child { margin-bottom: 0; }
+
+  /* footer bar at the bottom of every frame */
+  .wf-footer { background: #d8d8de; border-top: 2px solid #333; text-align: center;
+    font-size: 10px; padding: 10px; color: #444; }
+
+  /* tiny blue label naming each region */
+  .region-label { font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
+    color: #0f3460; font-weight: bold; margin-bottom: 6px; }
+
+  /* form input placeholders for the contact page */
+  .field { border: 2px solid #888; background: #fff; height: 30px; margin-bottom: 10px;
+    font-size: 10px; color: #999; padding: 8px; }
+  .field.area { height: 80px; }
+  .label-line { font-size: 10px; font-weight: bold; margin-bottom: 3px; color: #333; }
+
+  /* skill tags and skill level bars for the skills page */
+  .tag { display: inline-block; border: 1px solid #667; background: #e8ecf7;
+    font-size: 10px; padding: 4px 8px; margin: 0 6px 6px 0; }
+  .skillbar { background: #eee; border: 1px solid #999; height: 12px; margin-bottom: 10px; }
+  .skillbar div { background: #9aa4c4; height: 100%; }
+
+  /* two column split used on the desktop resume and contact frames */
+  .two-col { display: flex; gap: 14px; }
+  .side-col { width: 30%; } .main-col { flex: 1; }
+
+  /* the note boxes in the margins with the design specs */
+  .margin-notes { width: 400px; flex-shrink: 0; }
+  .note { border: 2px solid #0f3460; background: #eef2ff; padding: 12px 14px;
+    margin-bottom: 14px; font-size: 12px; line-height: 1.55; border-radius: 4px; }
+  .note h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
+    color: #0f3460; margin-bottom: 8px; }
+  .note ul { padding-left: 18px; }
+  .note li { margin-bottom: 5px; }
+  .swatch { display: inline-block; width: 12px; height: 12px; border: 1px solid #333;
+    vertical-align: middle; margin-right: 5px; }
+  code { background: #fff; border: 1px solid #ccd; padding: 0 4px; font-size: 11px; }
+</style>
+</head>
+<body>
+
+<!-- shared note boxes that get copied into every sheet by the script at the bottom -->
+<template id="tpl-typography">
+  <div class="note">
+    <h4>&#9998; Typography Spec</h4>
+    <ul>
+      <li><b>Headings:</b> Montserrat 700 (google font), fallback <code>Arial, sans-serif</code></li>
+      <li><b>Body:</b> Open Sans 400, 16px, line height 1.7</li>
+      <li><b>H1:</b> <span class="h1size"></span> &nbsp;|&nbsp; <b>H2:</b> <span class="h2size"></span></li>
+      <li><b>Nav + buttons:</b> Montserrat 600, 14px, uppercase, 1px letter spacing</li>
+    </ul>
+  </div>
+</template>
+
+<template id="tpl-colors">
+  <div class="note">
+    <h4>&#127912; Color Scheme (hex)</h4>
+    <ul>
+      <li><span class="swatch" style="background:#1a1a2e"></span><code>#1a1a2e</code> dark navy: header, footer, nav</li>
+      <li><span class="swatch" style="background:#0f3460"></span><code>#0f3460</code> deep blue: headings, links, borders</li>
+      <li><span class="swatch" style="background:#e94560"></span><code>#e94560</code> coral: CTA buttons, hover + focus</li>
+      <li><span class="swatch" style="background:#f4f4f4"></span><code>#f4f4f4</code> light gray: page background</li>
+      <li><span class="swatch" style="background:#ffffff"></span><code>#ffffff</code> white: content cards</li>
+      <li><span class="swatch" style="background:#222222"></span><code>#222222</code> body text, 15.9:1 contrast on white</li>
+    </ul>
+  </div>
+</template>
+
+<!-- 1. home page, mobile version -->
+<div class="sheet" id="home-mobile">
+  <div class="sheet-title">1. Home (index.html): Mobile Wireframe</div>
+  <div class="sheet-sub">Viewport: 375px &bull; Single-column, mobile-first layout</div>
+  <div class="layout">
+    <div class="frame mobile-frame">
+      <div class="wf-bar"><span class="logo">HB | HUNTER BENNER</span><div class="hamburger"><div></div><div></div><div></div></div></div>
+      <div class="wf-section">
+        <div class="region-label">Hero</div>
+        <div class="imgbox" style="width:110px;height:110px;border-radius:50%;margin:0 auto 12px;"><span>headshot</span></div>
+        <div class="h-line big" style="width:80%;margin:0 auto 8px;"></div>
+        <div class="t-line" style="width:65%;margin:0 auto 6px;"></div>
+        <div class="t-line short" style="margin:0 auto;"></div>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">Call to action</div>
+        <div class="stack">
+          <span class="btn block">VIEW MY PROJECTS</span>
+          <span class="btn block ghost">CONTACT ME</span>
+        </div>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">About me summary</div>
+        <div class="h-line" style="width:50%"></div>
+        <div class="t-line"></div><div class="t-line"></div><div class="t-line short"></div>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">Featured projects (stacked)</div>
+        <div class="stack">
+          <div class="card"><div class="imgbox" style="height:80px;margin-bottom:8px;"><span>project img</span></div><div class="h-line" style="width:60%"></div><div class="t-line"></div></div>
+          <div class="card"><div class="imgbox" style="height:80px;margin-bottom:8px;"><span>project img</span></div><div class="h-line" style="width:60%"></div><div class="t-line"></div></div>
+        </div>
+      </div>
+      <div class="wf-footer">FOOTER &bull; &copy; 2026 Hunter Benner &bull; GitHub &bull; Email</div>
+    </div>
+    <div class="margin-notes">
+      <div class="note">
+        <h4>&#9634; White Space Plan</h4>
+        <ul>
+          <li><b>active:</b> 24px between page regions</li>
+          <li><b>active:</b> 16px gap between the CTA buttons</li>
+          <li><b>passive:</b> 16px side gutters</li>
+          <li>buttons full width, 48px min height for touch</li>
+        </ul>
+      </div>
+      <div data-notes="typography" data-h1="32px" data-h2="24px"></div>
+      <div data-notes="colors"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. home page, desktop version -->
+<div class="sheet" id="home-desktop">
+  <div class="sheet-title">2. Home (index.html): Desktop Wireframe</div>
+  <div class="sheet-sub">Viewport: 1200px+ &bull; Multi-column layout (min-width: 768px media query)</div>
+  <div class="layout">
+    <div class="frame desktop-frame">
+      <div class="wf-bar"><span class="logo">HB | HUNTER BENNER</span>
+        <div class="navlinks"><span class="on">Home</span><span>Projects</span><span>Skills</span><span>Resume</span><span>Contact</span></div>
+      </div>
+      <div class="wf-section" style="display:flex;gap:24px;align-items:center;">
+        <div style="flex:1.4">
+          <div class="region-label">Hero : text column</div>
+          <div class="h-line big" style="width:85%"></div>
+          <div class="h-line" style="width:55%"></div>
+          <div class="t-line"></div><div class="t-line short"></div>
+          <div style="margin-top:12px;"><span class="btn">VIEW MY PROJECTS</span>&nbsp;&nbsp;<span class="btn ghost">CONTACT ME</span></div>
+        </div>
+        <div style="flex:1">
+          <div class="region-label">Hero : image column</div>
+          <div class="imgbox" style="height:180px;"><span>headshot / hero image</span></div>
+        </div>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">Featured projects : 3-column grid</div>
+        <div class="cards-row">
+          <div class="card"><div class="imgbox" style="height:70px;margin-bottom:8px;"><span>img</span></div><div class="h-line" style="width:70%"></div><div class="t-line"></div><div class="t-line short"></div></div>
+          <div class="card"><div class="imgbox" style="height:70px;margin-bottom:8px;"><span>img</span></div><div class="h-line" style="width:70%"></div><div class="t-line"></div><div class="t-line short"></div></div>
+          <div class="card"><div class="imgbox" style="height:70px;margin-bottom:8px;"><span>img</span></div><div class="h-line" style="width:70%"></div><div class="t-line"></div><div class="t-line short"></div></div>
+        </div>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">About me summary (centered, max-width 850px)</div>
+        <div class="h-line" style="width:30%;margin:0 auto 8px;"></div>
+        <div class="t-line" style="width:80%;margin:0 auto 6px;"></div>
+        <div class="t-line" style="width:70%;margin:0 auto;"></div>
+      </div>
+      <div class="wf-footer">FOOTER &bull; &copy; 2026 Hunter Benner &bull; GitHub &bull; LinkedIn &bull; Email</div>
+    </div>
+    <div class="margin-notes">
+      <div class="note">
+        <h4>&#9634; White Space Plan</h4>
+        <ul>
+          <li><b>active:</b> 60px padding around the hero</li>
+          <li><b>active:</b> 24px gaps between project cards</li>
+          <li><b>active:</b> extra room around the CTA buttons</li>
+          <li><b>passive:</b> max width 1100px, centered</li>
+        </ul>
+      </div>
+      <div data-notes="typography" data-h1="48px" data-h2="32px"></div>
+      <div data-notes="colors"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. projects page, mobile version -->
+<div class="sheet" id="projects-mobile">
+  <div class="sheet-title">3. Projects (projects.html): Mobile Wireframe</div>
+  <div class="sheet-sub">Viewport: 375px &bull; Single-column stacked project cards</div>
+  <div class="layout">
+    <div class="frame mobile-frame">
+      <div class="wf-bar"><span class="logo">HB | HUNTER BENNER</span><div class="hamburger"><div></div><div></div><div></div></div></div>
+      <div class="wf-section">
+        <div class="region-label">Page heading</div>
+        <div class="h-line big" style="width:60%"></div>
+        <div class="t-line short"></div>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">Project cards (stacked 1-col)</div>
+        <div class="stack">
+          <div class="card">
+            <div class="imgbox" style="height:100px;margin-bottom:8px;"><span>project screenshot</span></div>
+            <div class="h-line" style="width:65%"></div>
+            <div class="t-line"></div><div class="t-line short"></div>
+            <div class="tag">HTML</div><div class="tag">CSS</div><div class="tag">JS</div>
+            <div style="margin-top:8px;"><span class="btn" style="padding:6px 10px;">LIVE DEMO</span>&nbsp;<span class="btn ghost" style="padding:6px 10px;">GITHUB</span></div>
+          </div>
+          <div class="card">
+            <div class="imgbox" style="height:100px;margin-bottom:8px;"><span>project screenshot</span></div>
+            <div class="h-line" style="width:65%"></div>
+            <div class="t-line"></div><div class="t-line short"></div>
+            <div class="tag">Python</div><div class="tag">Git</div>
+            <div style="margin-top:8px;"><span class="btn" style="padding:6px 10px;">LIVE DEMO</span>&nbsp;<span class="btn ghost" style="padding:6px 10px;">GITHUB</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="wf-footer">FOOTER &bull; &copy; 2026 Hunter Benner</div>
+    </div>
+    <div class="margin-notes">
+      <div class="note">
+        <h4>&#9634; White Space Plan</h4>
+        <ul>
+          <li><b>active:</b> 20px between stacked cards</li>
+          <li><b>active:</b> 12px padding inside each card</li>
+          <li><b>passive:</b> 16px side gutters, #f4f4f4 behind white cards</li>
+        </ul>
+      </div>
+      <div data-notes="typography" data-h1="32px" data-h2="22px"></div>
+      <div data-notes="colors"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. projects page, desktop version -->
+<div class="sheet" id="projects-desktop">
+  <div class="sheet-title">4. Projects (projects.html): Desktop Wireframe</div>
+  <div class="sheet-sub">Viewport: 1200px+ &bull; 3-column CSS Grid of project cards</div>
+  <div class="layout">
+    <div class="frame desktop-frame">
+      <div class="wf-bar"><span class="logo">HB | HUNTER BENNER</span>
+        <div class="navlinks"><span>Home</span><span class="on">Projects</span><span>Skills</span><span>Resume</span><span>Contact</span></div>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">Page heading (centered)</div>
+        <div class="h-line big" style="width:35%;margin:0 auto 8px;"></div>
+        <div class="t-line" style="width:50%;margin:0 auto;"></div>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">Project grid : 3 columns &times; 2 rows</div>
+        <div class="cards-row" style="margin-bottom:14px;">
+          <div class="card"><div class="imgbox" style="height:80px;margin-bottom:8px;"><span>img</span></div><div class="h-line" style="width:70%"></div><div class="t-line"></div><div class="tag">HTML</div><div class="tag">CSS</div><div style="margin-top:6px;"><span class="btn" style="padding:5px 8px;font-size:10px;">DEMO</span>&nbsp;<span class="btn ghost" style="padding:5px 8px;font-size:10px;">CODE</span></div></div>
+          <div class="card"><div class="imgbox" style="height:80px;margin-bottom:8px;"><span>img</span></div><div class="h-line" style="width:70%"></div><div class="t-line"></div><div class="tag">JS</div><div class="tag">API</div><div style="margin-top:6px;"><span class="btn" style="padding:5px 8px;font-size:10px;">DEMO</span>&nbsp;<span class="btn ghost" style="padding:5px 8px;font-size:10px;">CODE</span></div></div>
+          <div class="card"><div class="imgbox" style="height:80px;margin-bottom:8px;"><span>img</span></div><div class="h-line" style="width:70%"></div><div class="t-line"></div><div class="tag">Python</div><div style="margin-top:6px;"><span class="btn" style="padding:5px 8px;font-size:10px;">DEMO</span>&nbsp;<span class="btn ghost" style="padding:5px 8px;font-size:10px;">CODE</span></div></div>
+        </div>
+        <div class="cards-row">
+          <div class="card"><div class="imgbox" style="height:80px;margin-bottom:8px;"><span>img</span></div><div class="h-line" style="width:70%"></div><div class="t-line"></div><div class="tag">Git</div><div style="margin-top:6px;"><span class="btn" style="padding:5px 8px;font-size:10px;">DEMO</span>&nbsp;<span class="btn ghost" style="padding:5px 8px;font-size:10px;">CODE</span></div></div>
+          <div class="card"><div class="imgbox" style="height:80px;margin-bottom:8px;"><span>img</span></div><div class="h-line" style="width:70%"></div><div class="t-line"></div><div class="tag">CSS</div><div style="margin-top:6px;"><span class="btn" style="padding:5px 8px;font-size:10px;">DEMO</span>&nbsp;<span class="btn ghost" style="padding:5px 8px;font-size:10px;">CODE</span></div></div>
+          <div class="card"><div class="imgbox" style="height:80px;margin-bottom:8px;"><span>img</span></div><div class="h-line" style="width:70%"></div><div class="t-line"></div><div class="tag">JS</div><div style="margin-top:6px;"><span class="btn" style="padding:5px 8px;font-size:10px;">DEMO</span>&nbsp;<span class="btn ghost" style="padding:5px 8px;font-size:10px;">CODE</span></div></div>
+        </div>
+      </div>
+      <div class="wf-footer">FOOTER &bull; &copy; 2026 Hunter Benner</div>
+    </div>
+    <div class="margin-notes">
+      <div class="note">
+        <h4>&#9634; White Space Plan</h4>
+        <ul>
+          <li><b>active:</b> 24px grid gap, both directions</li>
+          <li><b>active:</b> 48px under the page heading</li>
+          <li><b>passive:</b> grid max width 1100px, centered</li>
+        </ul>
+      </div>
+      <div data-notes="typography" data-h1="48px" data-h2="28px"></div>
+      <div data-notes="colors"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 5. skills page, mobile version -->
+<div class="sheet" id="skills-mobile">
+  <div class="sheet-title">5. Skills (skills.html): Mobile Wireframe</div>
+  <div class="sheet-sub">Viewport: 375px &bull; Single-column stacked skill categories</div>
+  <div class="layout">
+    <div class="frame mobile-frame">
+      <div class="wf-bar"><span class="logo">HB | HUNTER BENNER</span><div class="hamburger"><div></div><div></div><div></div></div></div>
+      <div class="wf-section">
+        <div class="region-label">Page heading</div>
+        <div class="h-line big" style="width:50%"></div>
+        <div class="t-line short"></div>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">Languages (card)</div>
+        <div class="card">
+          <div class="h-line" style="width:45%"></div>
+          <div class="label-line">HTML / CSS</div><div class="skillbar"><div style="width:85%"></div></div>
+          <div class="label-line">JavaScript</div><div class="skillbar"><div style="width:70%"></div></div>
+          <div class="label-line">Python</div><div class="skillbar"><div style="width:60%"></div></div>
+        </div>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">Tools (card)</div>
+        <div class="card">
+          <div class="h-line" style="width:35%"></div>
+          <div class="tag">Git</div><div class="tag">GitHub</div><div class="tag">VS Code</div><div class="tag">Chrome DevTools</div>
+        </div>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">Currently learning (card)</div>
+        <div class="card">
+          <div class="h-line" style="width:55%"></div>
+          <div class="tag">React</div><div class="tag">Node.js</div><div class="tag">SQL</div>
+        </div>
+      </div>
+      <div class="wf-footer">FOOTER &bull; &copy; 2026 Hunter Benner</div>
+    </div>
+    <div class="margin-notes">
+      <div class="note">
+        <h4>&#9634; White Space Plan</h4>
+        <ul>
+          <li><b>active:</b> 20px between category cards</li>
+          <li><b>active:</b> 10px between skill bars</li>
+          <li><b>passive:</b> 16px side gutters, light gray page background</li>
+        </ul>
+      </div>
+      <div data-notes="typography" data-h1="32px" data-h2="22px"></div>
+      <div data-notes="colors"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 6. skills page, desktop version -->
+<div class="sheet" id="skills-desktop">
+  <div class="sheet-title">6. Skills (skills.html): Desktop Wireframe</div>
+  <div class="sheet-sub">Viewport: 1200px+ &bull; 3-column grid of skill category cards</div>
+  <div class="layout">
+    <div class="frame desktop-frame">
+      <div class="wf-bar"><span class="logo">HB | HUNTER BENNER</span>
+        <div class="navlinks"><span>Home</span><span>Projects</span><span class="on">Skills</span><span>Resume</span><span>Contact</span></div>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">Page heading (centered)</div>
+        <div class="h-line big" style="width:30%;margin:0 auto 8px;"></div>
+        <div class="t-line" style="width:45%;margin:0 auto;"></div>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">Skill categories : 3 columns side by side</div>
+        <div class="cards-row">
+          <div class="card">
+            <div class="h-line" style="width:60%"></div>
+            <div class="label-line">HTML / CSS</div><div class="skillbar"><div style="width:85%"></div></div>
+            <div class="label-line">JavaScript</div><div class="skillbar"><div style="width:70%"></div></div>
+            <div class="label-line">Python</div><div class="skillbar"><div style="width:60%"></div></div>
+          </div>
+          <div class="card">
+            <div class="h-line" style="width:40%"></div>
+            <div class="tag">Git</div><div class="tag">GitHub</div><div class="tag">VS Code</div><div class="tag">DevTools</div><div class="tag">npm</div>
+          </div>
+          <div class="card">
+            <div class="h-line" style="width:70%"></div>
+            <div class="tag">React</div><div class="tag">Node.js</div><div class="tag">SQL</div>
+            <div class="t-line" style="margin-top:8px;"></div><div class="t-line short"></div>
+          </div>
+        </div>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">Certifications / coursework strip (full width)</div>
+        <div class="t-line" style="width:70%"></div><div class="t-line short"></div>
+      </div>
+      <div class="wf-footer">FOOTER &bull; &copy; 2026 Hunter Benner</div>
+    </div>
+    <div class="margin-notes">
+      <div class="note">
+        <h4>&#9634; White Space Plan</h4>
+        <ul>
+          <li><b>active:</b> 24px gaps between the 3 columns</li>
+          <li><b>active:</b> 48px below the heading</li>
+          <li><b>passive:</b> max width 1100px, centered</li>
+        </ul>
+      </div>
+      <div data-notes="typography" data-h1="48px" data-h2="28px"></div>
+      <div data-notes="colors"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 7. resume page, mobile version -->
+<div class="sheet" id="resume-mobile">
+  <div class="sheet-title">7. Resume (resume.html): Mobile Wireframe</div>
+  <div class="sheet-sub">Viewport: 375px &bull; Single column; download button pinned near top</div>
+  <div class="layout">
+    <div class="frame mobile-frame">
+      <div class="wf-bar"><span class="logo">HB | HUNTER BENNER</span><div class="hamburger"><div></div><div></div><div></div></div></div>
+      <div class="wf-section">
+        <div class="region-label">Page heading + download</div>
+        <div class="h-line big" style="width:55%"></div>
+        <span class="btn block">&#8595; DOWNLOAD RESUME (PDF)</span>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">Education</div>
+        <div class="card"><div class="h-line" style="width:50%"></div><div class="t-line"></div><div class="t-line short"></div></div>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">Work experience (stacked entries)</div>
+        <div class="stack">
+          <div class="card"><div class="h-line" style="width:60%"></div><div class="t-line short"></div><div class="t-line"></div><div class="t-line"></div></div>
+          <div class="card"><div class="h-line" style="width:60%"></div><div class="t-line short"></div><div class="t-line"></div></div>
+        </div>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">Certifications</div>
+        <div class="card"><div class="t-line"></div><div class="t-line short"></div></div>
+      </div>
+      <div class="wf-footer">FOOTER &bull; &copy; 2026 Hunter Benner</div>
+    </div>
+    <div class="margin-notes">
+      <div class="note">
+        <h4>&#9634; White Space Plan</h4>
+        <ul>
+          <li><b>active:</b> 20px above and below the download button</li>
+          <li><b>active:</b> 24px between resume sections</li>
+          <li><b>passive:</b> 16px gutters, 1.7 line height in entries</li>
+        </ul>
+      </div>
+      <div data-notes="typography" data-h1="32px" data-h2="22px"></div>
+      <div data-notes="colors"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 8. resume page, desktop version -->
+<div class="sheet" id="resume-desktop">
+  <div class="sheet-title">8. Resume (resume.html): Desktop Wireframe</div>
+  <div class="sheet-sub">Viewport: 1200px+ &bull; Two-column: fixed sidebar + main timeline</div>
+  <div class="layout">
+    <div class="frame desktop-frame">
+      <div class="wf-bar"><span class="logo">HB | HUNTER BENNER</span>
+        <div class="navlinks"><span>Home</span><span>Projects</span><span>Skills</span><span class="on">Resume</span><span>Contact</span></div>
+      </div>
+      <div class="wf-section">
+        <div class="two-col">
+          <div class="side-col">
+            <div class="region-label">Sidebar (30%)</div>
+            <div class="card">
+              <div class="imgbox" style="height:90px;margin-bottom:10px;"><span>photo</span></div>
+              <div class="t-line"></div><div class="t-line short"></div>
+              <span class="btn block" style="margin-top:10px;">&#8595; DOWNLOAD PDF</span>
+              <div style="margin-top:12px;"><div class="t-line short"></div><div class="t-line short"></div></div>
+            </div>
+          </div>
+          <div class="main-col">
+            <div class="region-label">Main column (70%) : timeline</div>
+            <div class="stack">
+              <div class="card"><div class="h-line" style="width:35%"></div><div class="t-line"></div><div class="t-line short"></div></div>
+              <div class="card"><div class="h-line" style="width:45%"></div><div class="t-line short"></div><div class="t-line"></div><div class="t-line"></div></div>
+              <div class="card"><div class="h-line" style="width:45%"></div><div class="t-line short"></div><div class="t-line"></div></div>
+              <div class="card"><div class="h-line" style="width:40%"></div><div class="t-line"></div><div class="t-line short"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wf-footer">FOOTER &bull; &copy; 2026 Hunter Benner</div>
+    </div>
+    <div class="margin-notes">
+      <div class="note">
+        <h4>&#9634; White Space Plan</h4>
+        <ul>
+          <li><b>active:</b> 32px gap between sidebar and main column</li>
+          <li><b>active:</b> 20px between timeline entries, 24px padding inside</li>
+          <li><b>passive:</b> max width 1100px, centered</li>
+        </ul>
+      </div>
+      <div data-notes="typography" data-h1="48px" data-h2="28px"></div>
+      <div data-notes="colors"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 9. contact page, mobile version -->
+<div class="sheet" id="contact-mobile">
+  <div class="sheet-title">9. Contact (contact.html): Mobile Wireframe</div>
+  <div class="sheet-sub">Viewport: 375px &bull; Single column: form first, then direct links</div>
+  <div class="layout">
+    <div class="frame mobile-frame">
+      <div class="wf-bar"><span class="logo">HB | HUNTER BENNER</span><div class="hamburger"><div></div><div></div><div></div></div></div>
+      <div class="wf-section">
+        <div class="region-label">Page heading</div>
+        <div class="h-line big" style="width:55%"></div>
+        <div class="t-line short"></div>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">Contact form (stacked, labels above fields)</div>
+        <div class="label-line">Name *</div><div class="field">text input</div>
+        <div class="label-line">Email *</div><div class="field">email input</div>
+        <div class="label-line">Message *</div><div class="field area">textarea</div>
+        <span class="btn block">SEND MESSAGE</span>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">Direct links</div>
+        <div class="stack">
+          <span class="btn block ghost">&#128231; EMAIL ME</span>
+          <span class="btn block ghost">&#128025; GITHUB PROFILE</span>
+        </div>
+      </div>
+      <div class="wf-footer">FOOTER &bull; &copy; 2026 Hunter Benner</div>
+    </div>
+    <div class="margin-notes">
+      <div class="note">
+        <h4>&#9634; White Space Plan</h4>
+        <ul>
+          <li><b>active:</b> 16px between form fields, labels 4px above inputs</li>
+          <li><b>active:</b> 20px above the send button</li>
+          <li><b>passive:</b> 16px gutters, inputs full width, 48px tall</li>
+        </ul>
+      </div>
+      <div data-notes="typography" data-h1="32px" data-h2="22px"></div>
+      <div data-notes="colors"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 10. contact page, desktop version -->
+<div class="sheet" id="contact-desktop">
+  <div class="sheet-title">10. Contact (contact.html): Desktop Wireframe</div>
+  <div class="sheet-sub">Viewport: 1200px+ &bull; Two-column: form (60%) + contact info (40%)</div>
+  <div class="layout">
+    <div class="frame desktop-frame">
+      <div class="wf-bar"><span class="logo">HB | HUNTER BENNER</span>
+        <div class="navlinks"><span>Home</span><span>Projects</span><span>Skills</span><span>Resume</span><span class="on">Contact</span></div>
+      </div>
+      <div class="wf-section">
+        <div class="region-label">Page heading (centered)</div>
+        <div class="h-line big" style="width:30%;margin:0 auto 8px;"></div>
+        <div class="t-line" style="width:45%;margin:0 auto;"></div>
+      </div>
+      <div class="wf-section">
+        <div class="two-col">
+          <div style="flex:1.5">
+            <div class="region-label">Contact form (60%)</div>
+            <div class="card">
+              <div style="display:flex;gap:12px;">
+                <div style="flex:1"><div class="label-line">Name *</div><div class="field">text</div></div>
+                <div style="flex:1"><div class="label-line">Email *</div><div class="field">email</div></div>
+              </div>
+              <div class="label-line">Subject</div><div class="field">text</div>
+              <div class="label-line">Message *</div><div class="field area">textarea</div>
+              <span class="btn">SEND MESSAGE</span>
+            </div>
+          </div>
+          <div style="flex:1">
+            <div class="region-label">Contact info (40%)</div>
+            <div class="card">
+              <div class="h-line" style="width:60%"></div>
+              <div class="t-line"></div><div class="t-line short"></div>
+              <div style="margin-top:12px;" class="stack">
+                <span class="btn block ghost">&#128231; EMAIL</span>
+                <span class="btn block ghost">&#128025; GITHUB</span>
+                <span class="btn block ghost">&#128188; LINKEDIN</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wf-footer">FOOTER &bull; &copy; 2026 Hunter Benner</div>
+    </div>
+    <div class="margin-notes">
+      <div class="note">
+        <h4>&#9634; White Space Plan</h4>
+        <ul>
+          <li><b>active:</b> 32px gap between form and info columns</li>
+          <li><b>active:</b> name and email share a row, 12px gap, 16px between other fields</li>
+          <li><b>passive:</b> max width 1100px, centered</li>
+        </ul>
+      </div>
+      <div data-notes="typography" data-h1="48px" data-h2="28px"></div>
+      <div data-notes="colors"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // copy the shared typography and color notes into every sheet
+  document.querySelectorAll('[data-notes="typography"]').forEach(el => {
+    const t = document.getElementById('tpl-typography').content.cloneNode(true);
+    t.querySelector('.h1size').textContent = el.dataset.h1;
+    t.querySelector('.h2size').textContent = el.dataset.h2;
+    el.replaceWith(t);
+  });
+  document.querySelectorAll('[data-notes="colors"]').forEach(el => {
+    el.replaceWith(document.getElementById('tpl-colors').content.cloneNode(true));
+  });
+  // show only the sheet named in the url, or all of them if none given
+  const page = new URLSearchParams(location.search).get('page');
+  const target = document.getElementById(page);
+  if (target) target.classList.add('active');
+  else document.querySelectorAll('.sheet').forEach(s => s.classList.add('active'));
+</script>
+</body>
+</html>
