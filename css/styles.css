@@ -1,7 +1,14 @@
 /*
     Author: Hunter Benner
-    Date: 07/14/2026
+    Date: 07/21/2026
     File Name: styles.css
+
+    Site palette:
+      #1a1a2e dark navy   (header, footer accents)
+      #0f3460 blue        (nav, headings)
+      #e94560 red         (brand accent, active nav marker)
+      #c9184a deep red    (filled buttons - darker step of the brand
+                           red so white button text passes WCAG AA)
 */
 
 * {
@@ -12,32 +19,82 @@
 
 body {
     font-family: 'Open Sans', Arial, sans-serif;
-    font-size: 16px;
+    font-size: 1rem; /* 16px default; rem respects the user's browser setting */
     line-height: 1.7;
     background-color: #f4f4f4;
     color: #222;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 700;
     color: #0f3460;
+    line-height: 1.3;
 }
 
+/* ----- Accessibility: skip link (Part 4 shared requirement) -----
+   Hidden until it receives keyboard focus, then shown at the top
+   of the page so keyboard users can jump straight to <main>. */
+.skip-link {
+    position: absolute;
+    left: 8px;
+    top: -48px;
+    z-index: 10;
+    padding: 10px 18px;
+    background-color: #1a1a2e;
+    color: #fff;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0 0 6px 6px;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ----- Accessibility: visible keyboard focus everywhere -----
+   Coral focus state per the Part 2 accessibility plan (WCAG SC 2.4.7). */
+:focus-visible {
+    outline: 3px solid #e94560;
+    outline-offset: 2px;
+}
+
+/* ----- Header and navigation -----
+   One bar, brand on the left and nav on the right at desktop widths,
+   matching the wireframes; stacks and centers on small screens. */
 header {
     background-color: #1a1a2e;
     color: #fff;
-    padding: 30px;
+    padding: 18px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
     text-align: center;
 }
 
-header h1 {
+/* Site name is a linked text mark, not the page h1
+   (each page now has its own h1 inside <main>). */
+.site-brand a {
     color: #fff;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+.site-brand a:hover {
+    color: #e94560;
+}
+
+.site-tagline {
+    color: #cfd3e0;
+    letter-spacing: 1px;
+    font-size: 0.85em;
 }
 
 nav {
-    background-color: #0f3460;
-    padding: 10px;
     text-align: center;
 }
 
@@ -46,11 +103,13 @@ nav ul {
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 15px;
+    display: inline-block;
+    margin: 0 10px;
 }
 
 nav ul li a {
+    display: inline-block;
+    padding: 6px 2px;
     color: #fff;
     text-decoration: none;
     font-family: 'Montserrat', Arial, sans-serif;
@@ -58,54 +117,86 @@ nav ul li a {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.9em;
+    border-bottom: 3px solid transparent;
 }
 
+nav ul li a:hover {
+    border-bottom-color: #5a7fb4;
+}
+
+/* Current page marker: bolder weight plus a solid red underline bar
+   applied through aria-current="page" (Part 4 shared requirement). */
+nav ul li a[aria-current="page"] {
+    font-weight: 700;
+    border-bottom-color: #e94560;
+}
+
+/* ----- Main content area ----- */
 main {
-    max-width: 900px;
+    max-width: 1100px; /* Part 2 spec: content max-width 1100px centered */
     margin: 40px auto;
-    padding: 20px;
+    padding: 28px 22px;
     background-color: #fff;
     border-radius: 8px;
+}
+
+main:focus {
+    outline: none; /* skip-link target; focus ring not needed on the region itself */
+}
+
+.page-intro {
+    margin-bottom: 32px;
+}
+
+.page-intro h1 {
+    font-size: 2em; /* 32px mobile H1 per the Part 2 typography spec */
+    margin-bottom: 8px;
+}
+
+.page-intro p {
+    max-width: 62ch;
+    color: #555;
 }
 
 footer {
     text-align: center;
     padding: 20px;
     font-size: 0.85em;
-    color: #888;
+    color: #555;
+}
+
+footer a {
+    color: #0f3460;
 }
 
 /* ----- Home page hero ----- */
 .hero {
-    padding-bottom: 24px;
-    margin-bottom: 24px;
+    padding-bottom: 28px;
+    margin-bottom: 28px;
     border-bottom: 1px solid #eee;
 }
 
-.hero-image {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    background-color: #0f3460;
-    margin: 0 auto 16px;
-}
-
-.hero h2 {
+.hero h1 {
+    font-size: 2em;
     margin-bottom: 8px;
 }
 
 .hero p {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+    max-width: 60ch;
 }
 
 .btn {
-    display: inline-block;
+    display: block;
+    width: 100%;
+    text-align: center;
     min-height: 48px;
     line-height: 48px;
     padding: 0 24px;
-    margin: 4px 8px 4px 0;
+    margin: 4px 0;
     font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 600;
+    font-size: 0.875em; /* 14px per the Part 2 nav/buttons spec */
     text-transform: uppercase;
     letter-spacing: 1px;
     text-decoration: none;
@@ -113,36 +204,596 @@ footer {
 }
 
 .btn-primary {
-    background-color: #e94560;
+    background-color: #c9184a;
     color: #fff;
-    border: 2px solid #e94560;
 }
 
-.btn-secondary {
-    background-color: transparent;
-    color: #1a1a2e;
-    border: 2px solid #1a1a2e;
+.btn-primary:hover {
+    background-color: #a81340;
+}
+
+/* Secondary action is a plain text link so the two actions
+   read differently instead of a matched button pair. */
+.link-secondary {
+    display: inline-block;
+    margin: 4px 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 600;
+    color: #0f3460;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.link-secondary:hover {
+    color: #c9184a;
 }
 
 /* ----- Home page about section ----- */
-.about-section {
-    text-align: center;
+.about-section h2 {
+    margin-bottom: 8px;
 }
 
-/* Desktop hero layout (768px and up) */
+.about-section p {
+    max-width: 68ch;
+}
+
+/* ----- Projects page: editorial article layout (Part 4) ----- */
+.project-list article {
+    padding: 28px 0;
+    border-top: 1px solid #e3e3e3;
+}
+
+.project-list article:first-of-type {
+    border-top: none;
+    padding-top: 8px;
+}
+
+.project-list h2 {
+    font-size: 1.5em;
+    margin-bottom: 2px;
+}
+
+.project-meta {
+    color: #555;
+    font-size: 0.95em;
+    margin-bottom: 14px;
+}
+
+.project-list h3 {
+    font-size: 1.05em;
+    margin: 18px 0 6px;
+}
+
+.project-list p,
+.project-list ul {
+    max-width: 70ch;
+}
+
+.project-list p {
+    margin-bottom: 10px;
+}
+
+.project-list ul {
+    padding-left: 22px;
+    margin: 6px 0;
+}
+
+.project-list li {
+    margin-bottom: 4px;
+}
+
+.projects-aside {
+    margin-top: 12px;
+    padding: 20px 22px;
+    background-color: #eef2ff;
+    border-radius: 8px;
+}
+
+.projects-aside h2 {
+    font-size: 1.1em;
+    margin-bottom: 6px;
+}
+
+.projects-aside p {
+    max-width: 70ch;
+}
+
+/* ----- Project screenshot figure ----- */
+.project-figure {
+    margin: 18px 0;
+}
+
+.project-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+.project-figure figcaption {
+    margin-top: 8px;
+    font-size: 0.95em;
+    color: #555;
+    max-width: 70ch;
+}
+
+/* ----- Video figure and transcripts (Part 4 multimedia) ----- */
+.video-figure {
+    margin: 16px 0 8px;
+}
+
+.video-figure video {
+    display: block;
+    width: 100%;
+    max-width: 720px;
+    border-radius: 6px;
+    background-color: #1a1a2e;
+}
+
+.video-figure figcaption {
+    margin-top: 8px;
+    font-size: 0.95em;
+    color: #555;
+    max-width: 70ch;
+}
+
+.transcript {
+    margin: 16px 0;
+    padding: 16px 20px;
+    background-color: #eef2ff;
+    border-radius: 8px;
+    max-width: 720px;
+}
+
+.transcript h3,
+.transcript h4 {
+    font-size: 1em;
+    margin-bottom: 6px;
+}
+
+.transcript ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.transcript li {
+    margin-bottom: 4px;
+}
+
+.transcript p {
+    max-width: 70ch;
+}
+
+.media-note {
+    font-size: 0.95em;
+    color: #555;
+    max-width: 70ch;
+}
+
+/* ----- Skills page: data table (Part 4) ----- */
+
+/* Scrollable wrapper keeps the table usable on narrow screens
+   without clipping; it is keyboard-focusable (tabindex="0") and
+   labelled by the table caption. */
+.table-scroll {
+    overflow-x: auto;
+    margin-bottom: 8px;
+}
+
+.skills-table {
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+}
+
+.skills-table caption {
+    text-align: left;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 700;
+    color: #0f3460;
+    font-size: 1.05em;
+    margin-bottom: 10px;
+}
+
+.skills-table th,
+.skills-table td {
+    padding: 10px 14px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.skills-table thead th {
+    background-color: #1a1a2e;
+    color: #fff;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+}
+
+.skills-table tbody th {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 600;
+    color: #0f3460;
+    white-space: nowrap;
+}
+
+/* Part 4 requirement: alternating row striping with
+   tbody tr:nth-of-type(even). Subtle blue-grey tint against the
+   white odd rows; #222 text keeps contrast above 13:1 on both. */
+tbody tr:nth-of-type(even) {
+    background-color: #eef2ff; /* pale blue from the Part 2 palette */
+}
+
+/* ----- Audio profile section (Part 4 multimedia) ----- */
+.audio-section {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid #e3e3e3;
+}
+
+.audio-section h2 {
+    font-size: 1.3em;
+    margin-bottom: 6px;
+}
+
+.audio-section audio {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    margin: 12px 0;
+}
+
+/* ----- Resume page: document layout (Part 4) ----- */
+.resume-layout {
+    display: grid;
+    gap: 32px;
+}
+
+.resume-article h2 {
+    font-size: 1.15em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 4px;
+    margin: 26px 0 10px;
+}
+
+.resume-article section:first-of-type h2 {
+    margin-top: 0;
+}
+
+.resume-article p,
+.resume-article li {
+    max-width: 70ch;
+}
+
+.resume-article p {
+    margin-bottom: 8px;
+}
+
+.resume-article .resume-item-title {
+    margin-top: 12px;
+    margin-bottom: 2px;
+}
+
+.resume-article ul {
+    padding-left: 22px;
+    margin: 6px 0;
+}
+
+.resume-article li {
+    margin-bottom: 4px;
+}
+
+.resume-item-title {
+    font-weight: 600;
+}
+
+.resume-aside {
+    padding: 20px 22px;
+    background-color: #eef2ff;
+    border-radius: 8px;
+    align-self: start;
+}
+
+.resume-aside h2 {
+    font-size: 1.05em;
+    margin-bottom: 6px;
+}
+
+.resume-aside h2 + p,
+.resume-aside h2 + ul {
+    margin-bottom: 18px;
+}
+
+.resume-aside ul {
+    list-style: none;
+}
+
+.resume-aside li {
+    margin-bottom: 4px;
+    overflow-wrap: anywhere;
+}
+
+.print-note {
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* ----- Contact page: form layout (Part 4) ----- */
+.contact-layout {
+    display: grid;
+    gap: 32px;
+}
+
+.contact-form .form-field {
+    margin-bottom: 18px;
+}
+
+.contact-form label {
+    display: block;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 0.95em;
+    color: #1a1a2e;
+    margin-bottom: 4px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    max-width: 480px;
+    padding: 10px 12px;
+    font: inherit;
+    color: #222;
+    background-color: #fff;
+    border: 1px solid #767676;
+    border-radius: 4px;
+}
+
+.contact-form textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.field-hint {
+    font-size: 0.85em;
+    color: #555;
+    margin-top: 2px;
+    max-width: 60ch;
+}
+
+/* Inline validation errors written by scripts/contact.js (Part 4) */
+.field-error {
+    color: #9f1239;
+    font-size: 0.9em;
+    margin-top: 4px;
+}
+
+.contact-form input[aria-invalid="true"],
+.contact-form select[aria-invalid="true"],
+.contact-form textarea[aria-invalid="true"] {
+    border: 2px solid #9f1239;
+}
+
+.contact-form button[type="submit"] {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    min-height: 48px;
+    padding: 0 28px;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 0.875em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    background-color: #c9184a;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.contact-form button[type="submit"]:hover {
+    background-color: #a81340;
+}
+
+/* Status line announced to assistive tech after submission */
+.form-status {
+    margin-top: 14px;
+    font-weight: 600;
+    max-width: 60ch;
+}
+
+.form-status.is-error {
+    color: #9f1239;
+}
+
+.form-status.is-success {
+    color: #14532d;
+}
+
+.contact-aside {
+    padding: 20px 22px;
+    background-color: #eef2ff;
+    border-radius: 8px;
+    align-self: start;
+}
+
+.contact-aside h2 {
+    font-size: 1.05em;
+    margin-bottom: 6px;
+}
+
+.contact-aside ul {
+    list-style: none;
+    margin-bottom: 14px;
+}
+
+.contact-aside li {
+    margin-bottom: 4px;
+    overflow-wrap: anywhere;
+}
+
+.contact-aside p {
+    font-size: 0.95em;
+    color: #555;
+    max-width: 50ch;
+}
+
+/* ----- Responsive layout: tablet and desktop ----- */
 @media (min-width: 768px) {
-    .hero {
-        display: flex;
+    header {
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
+        padding: 16px 36px;
+        text-align: left;
+    }
+
+    main {
+        padding: 40px 48px;
+    }
+
+    /* Part 2 typography spec: desktop H1 48px, H2 28px */
+    .page-intro h1,
+    .hero h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 1.75em;
+    }
+
+    /* Buttons are full width on mobile (Part 2 touch-target spec)
+       and shrink to fit their label on larger screens. */
+    .btn,
+    .contact-form button[type="submit"] {
+        display: inline-block;
+        width: auto;
+    }
+
+    .btn {
+        margin: 4px 8px 4px 0;
+    }
+
+    /* Sidebar on the left, resume content on the right (wireframe layout).
+       Source order keeps the resume first for mobile and screen readers. */
+    .resume-layout {
+        grid-template-columns: 1fr 2fr;
         gap: 40px;
     }
 
-    .hero-text {
-        flex: 1;
+    .resume-article {
+        grid-column: 2;
+        grid-row: 1;
     }
 
-    .hero-image {
+    .resume-aside {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .contact-layout {
+        grid-template-columns: 3fr 2fr;
+        gap: 40px;
+    }
+}
+
+/* ----- Reduced motion (Part 4 shared requirement) -----
+   The site uses no entrance or hover movement, but this guard
+   also disables smooth scrolling and any future transitions. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ----- Print styles (Part 4: printable resume) -----
+   resume.html has no PDF download; instead the page itself prints
+   cleanly so it can be saved as a PDF from the browser. */
+@media print {
+    body {
+        background-color: #fff;
+        color: #000;
+        font-size: 11pt;
+        line-height: 1.5;
+    }
+
+    .skip-link,
+    nav,
+    .site-tagline,
+    .btn,
+    .link-secondary,
+    .print-note,
+    .contact-form button[type="submit"] {
+        display: none;
+    }
+
+    header {
+        display: block;
+        background-color: #fff;
+        color: #000;
+        padding: 0 0 12pt;
+        text-align: left;
+    }
+
+    .site-brand a {
+        color: #000;
+        font-size: 18pt;
+    }
+
+    main {
+        max-width: none;
         margin: 0;
-        flex-shrink: 0;
+        padding: 0;
+        border-radius: 0;
+        background-color: #fff;
+    }
+
+    h1, h2, h3, h4 {
+        color: #000;
+    }
+
+    /* Print the contact aside first, like a real resume header */
+    .resume-layout {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .resume-aside {
+        background-color: #fff;
+        padding: 0;
+        margin-bottom: 12pt;
+    }
+
+    .resume-article section,
+    .resume-aside {
+        break-inside: avoid;
+    }
+
+    h2, h3 {
+        break-after: avoid;
+    }
+
+    .resume-article h2 {
+        border-bottom-color: #000;
+    }
+
+    footer {
+        color: #000;
+        text-align: left;
+        padding: 12pt 0 0;
+    }
+
+    a {
+        color: #000;
+        text-decoration: none;
     }
 }

@@ -2,36 +2,166 @@
 <!--
     Student Name: Hunter Benner
     File Name: projects.html
-    Date: 06/29/2026
+    Date: 07/21/2026
 -->
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects – Hunter Benner</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <meta name="description" content="Software projects by Hunter Benner: World, a 3D globe app for exploring places, and this course portfolio built by hand.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- Part 4: keyboard-visible skip link on every page -->
+    <a class="skip-link" href="#main">Skip to main content</a>
     <header>
-        <h1>Hunter Benner</h1>
-        <p>Software Developer</p>
+        <div class="site-brand-block">
+            <p class="site-brand"><a href="index.html">Hunter Benner</a></p>
+            <p class="site-tagline">Software Developer</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <!-- Part 4: current page marked with aria-current="page" -->
+                <li><a href="projects.html" aria-current="page">Projects</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="skills.html">Skills</a></li>
-            <li><a href="resume.html">Resume</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-    <main>
-        <h2>Projects</h2>
-        <p>A showcase of my software development projects will be listed here.</p>
+    <main id="main" tabindex="-1">
+        <div class="page-intro">
+            <h1>Projects</h1>
+            <p>
+                These are the two projects I work on most: a personal project, and this
+                portfolio website I'm building through my course assignments.
+            </p>
+        </div>
+
+        <!-- Part 4: semantic layout - section containing two complete articles -->
+        <section class="project-list" aria-label="Project write-ups">
+            <article>
+                <h2>World</h2>
+                <p class="project-meta">Personal 3D globe project</p>
+
+                <p>
+                    Outside of class I've been building a web app for myself. The part I can
+                    show is called World: a 3D globe you can rotate, zoom, and click. When
+                    you move to a new place, the page updates with information about that
+                    area.
+                </p>
+                <p>It can show:</p>
+                <ul>
+                    <li>Place, coordinates, and local time</li>
+                    <li>Weather and rain movement</li>
+                    <li>Population information</li>
+                    <li>Local news and politics</li>
+                    <li>Regional risks and conflicts</li>
+                    <li>Nearby stock markets</li>
+                </ul>
+
+                <!-- Part 4: real screenshot of the World globe project -->
+                <figure class="project-figure">
+                    <img src="images/world-globe.png" width="1915" height="778"
+                         alt="The World globe focused on Brazil at night. A panel on the left lists coordinates, local time, population, weather, markets, and government details, and a panel on the right shows recent news headlines for South America.">
+                    <figcaption>
+                        World focused on Brazil: the globe in the middle, place details on
+                        the left, and regional news on the right.
+                    </figcaption>
+                </figure>
+
+                <p>
+                    I built the globe with JavaScript and Three.js. A Python and Flask server
+                    collects data from Open-Meteo, the World Bank, RainViewer, and other
+                    public sources.
+                </p>
+                <p>
+                    None of this came from a class. I pieced it together from YouTube
+                    tutorials, Reddit threads, and developers I follow on Twitter, plus a lot
+                    of trial and error.
+                </p>
+                <p>
+                    The hardest part is keeping everything matched to the same location. Some
+                    sources are slow or do not answer at all. When that happens, the page
+                    says the data is loading or unavailable instead of guessing.
+                </p>
+            </article>
+
+            <article>
+                <h2>Developer Portfolio</h2>
+                <p class="project-meta">Web design course project</p>
+
+                <p>
+                    This is the website you are viewing now. It has five pages, one shared
+                    stylesheet, and a small JavaScript file for the contact form.
+                </p>
+                <p>The site includes:</p>
+                <ul>
+                    <li>Keyboard-friendly navigation</li>
+                    <li>A responsive skills table</li>
+                    <li>A validated contact form</li>
+                    <li>Audio and video with transcripts</li>
+                    <li>A printable resume</li>
+                </ul>
+                <p>
+                    I built it with HTML, CSS, and vanilla JavaScript. I also use Git and
+                    GitHub Pages to track and publish my work.
+                </p>
+                <p>
+                    This project taught me to get the page structure right before worrying
+                    about how it looks. It also helped me improve at responsive design,
+                    accessibility, and keeping my Git commits organized.
+                </p>
+
+                <!-- Part 4: HTML5 video with captions track, fallback, and transcript -->
+                <figure class="video-figure">
+                    <h3 id="walkthrough-heading">Video walkthrough</h3>
+                    <video controls preload="metadata" aria-labelledby="walkthrough-heading">
+                        <source src="media/portfolio-walkthrough.mp4" type="video/mp4">
+                        <track kind="captions" src="media/portfolio-walkthrough-captions.vtt" srclang="en" label="English" default>
+                        Your browser does not support HTML video.
+                        <a href="media/portfolio-walkthrough.mp4" download>Download the walkthrough video (MP4)</a> instead.
+                    </video>
+                    <figcaption>
+                        A 56-second silent screen recording that walks through each page of
+                        this site: the home page, this projects page, the skills table, the
+                        resume, and the contact form.
+                    </figcaption>
+                </figure>
+                <p class="media-note">
+                    If the player doesn't work in your browser, you can
+                    <a href="media/portfolio-walkthrough.mp4" download>download the walkthrough video (MP4)</a> directly.
+                </p>
+                <div class="transcript">
+                    <h4>Video transcript</h4>
+                    <p>The recording is silent; each segment shows one page of the site.</p>
+                    <ul>
+                        <li>0:00 to 0:05. Home page: introduction and About Me section.</li>
+                        <li>0:05 to 0:23. Projects page: the World globe project and Developer Portfolio.</li>
+                        <li>0:23 to 0:39. Skills page: striped table of skills and tools.</li>
+                        <li>0:39 to 0:51. Resume page: summary, education, and certifications.</li>
+                        <li>0:51 to 0:57. Contact page: the validated contact form.</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+
+        <!-- Part 4: aside with related but separate content -->
+        <aside class="projects-aside" aria-label="How I build">
+            <h2>How I build</h2>
+            <p>
+                Test early, in a real browser, on a small screen. Keep the interface honest:
+                if data is missing or still loading, say so. Build keyboard access and focus
+                states with the feature, not as a pass at the end. And scope on purpose. A
+                small thing that works beats a big thing that almost does.
+            </p>
+        </aside>
     </main>
     <footer>
-        <p>&copy; 2026 Hunter Benner</p>
+        <p>&copy; 2026 Hunter Benner &middot; <a href="https://github.com/hunterbenner">GitHub</a> &middot; <a href="mailto:hunterbenner3@gmail.com">Email</a></p>
     </footer>
 </body>
 </html>

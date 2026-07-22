@@ -2,40 +2,117 @@
 <!--
     Student Name: Hunter Benner
     File Name: contact.html
-    Date: 06/29/2026
+    Date: 07/21/2026
 -->
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact – Hunter Benner</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <meta name="description" content="Contact Hunter Benner through a short form, by email, or on GitHub.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- Part 4: keyboard-visible skip link on every page -->
+    <a class="skip-link" href="#main">Skip to main content</a>
     <header>
-        <h1>Hunter Benner</h1>
-        <p>Software Developer</p>
+        <div class="site-brand-block">
+            <p class="site-brand"><a href="index.html">Hunter Benner</a></p>
+            <p class="site-tagline">Software Developer</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <!-- Part 4: current page marked with aria-current="page" -->
+                <li><a href="contact.html" aria-current="page">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="skills.html">Skills</a></li>
-            <li><a href="resume.html">Resume</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-    <main>
-        <h2>Contact</h2>
-        <p>Get in touch with me through the form or links below.</p>
-        <ul>
-            <li>Email: <a href="mailto:hunterbenner3@gmail.com">hunterbenner3@gmail.com</a></li>
-            <li>GitHub: <a href="https://github.com/hunterbenner" target="_blank">github.com/hunterbenner</a></li>
-        </ul>
+    <main id="main" tabindex="-1">
+        <div class="page-intro">
+            <h1>Contact</h1>
+            <p>
+                Have a question about my work, or an opportunity you'd like to talk about?
+                The form works, and so does plain email.
+            </p>
+        </div>
+
+        <div class="contact-layout">
+            <!-- Part 4: validated contact form. Built-in HTML validation
+                 attributes plus scripts/contact.js for inline error messages,
+                 focus management, and an honest status message. -->
+            <form class="contact-form" id="contact-form" action="#" method="post">
+                <div class="form-field">
+                    <label for="contact-name">Name</label>
+                    <input type="text" id="contact-name" name="name"
+                           required minlength="2" maxlength="80" autocomplete="name">
+                </div>
+
+                <div class="form-field">
+                    <label for="contact-email">Email</label>
+                    <input type="email" id="contact-email" name="email"
+                           required maxlength="100" autocomplete="email">
+                </div>
+
+                <div class="form-field">
+                    <label for="contact-phone">Phone (optional)</label>
+                    <input type="tel" id="contact-phone" name="phone"
+                           maxlength="20" autocomplete="tel" inputmode="tel"
+                           pattern="[0-9+\(\)\-\. ]{7,20}"
+                           aria-describedby="phone-hint">
+                    <p class="field-hint" id="phone-hint">
+                        Digits, spaces, and + ( ) - . are fine, for example 555-123-4567.
+                    </p>
+                </div>
+
+                <div class="form-field">
+                    <label for="contact-reason">Reason for contacting</label>
+                    <select id="contact-reason" name="reason" required>
+                        <option value="" disabled selected>Choose a reason</option>
+                        <option value="course">Course or assignment question</option>
+                        <option value="opportunity">Internship or job opportunity</option>
+                        <option value="feedback">Feedback on a project</option>
+                        <option value="other">Something else</option>
+                    </select>
+                </div>
+
+                <div class="form-field">
+                    <label for="contact-message">Message</label>
+                    <textarea id="contact-message" name="message"
+                              required minlength="10" maxlength="1000"
+                              aria-describedby="message-hint"></textarea>
+                    <p class="field-hint" id="message-hint">
+                        A sentence or two is plenty. 10 to 1,000 characters.
+                    </p>
+                </div>
+
+                <button type="submit">Send message</button>
+
+                <!-- Status region exists at load so screen readers announce updates -->
+                <p class="form-status" id="form-status" role="status"></p>
+            </form>
+
+            <!-- Part 4: aside with direct contact routes -->
+            <aside class="contact-aside" aria-label="Other ways to reach me">
+                <h2>Reach me directly</h2>
+                <ul>
+                    <li><a href="mailto:hunterbenner3@gmail.com">hunterbenner3@gmail.com</a></li>
+                    <li><a href="https://github.com/hunterbenner" target="_blank" rel="noopener noreferrer">github.com/hunterbenner</a></li>
+                </ul>
+                <p>
+                    This form is a class demonstration and does not send email yet, so the
+                    address above is the reliable way to reach me.
+                </p>
+            </aside>
+        </div>
     </main>
     <footer>
-        <p>&copy; 2026 Hunter Benner</p>
+        <p>&copy; 2026 Hunter Benner &middot; <a href="https://github.com/hunterbenner">GitHub</a> &middot; <a href="mailto:hunterbenner3@gmail.com">Email</a></p>
     </footer>
+    <script src="scripts/contact.js"></script>
 </body>
 </html>

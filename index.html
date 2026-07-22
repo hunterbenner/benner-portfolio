@@ -2,42 +2,48 @@
 <!--
     Student Name: Hunter Benner
     File Name: index.html
-    Date: 07/14/2026
+    Date: 07/21/2026
 -->
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hunter Benner – Software Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <meta name="description" content="Portfolio of Hunter Benner, a second-year Software Development student focused on front-end and full-stack web development.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- Part 4: keyboard-visible skip link on every page -->
+    <a class="skip-link" href="#main">Skip to main content</a>
     <header>
-        <h1>Hunter Benner</h1>
-        <p>Software Developer</p>
+        <div class="site-brand-block">
+            <!-- Site name is a linked text mark; the page h1 lives in main -->
+            <p class="site-brand"><a href="index.html">Hunter Benner</a></p>
+            <p class="site-tagline">Software Developer</p>
+        </div>
+        <nav>
+            <ul>
+                <!-- Part 4: current page marked with aria-current="page" -->
+                <li><a href="index.html" aria-current="page">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="skills.html">Skills</a></li>
-            <li><a href="resume.html">Resume</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-    <main>
+    <main id="main" tabindex="-1">
         <section class="hero">
-            <div class="hero-image"></div>
-            <div class="hero-text">
-                <h2>Hi, I'm Hunter</h2>
-                <p>
-                    I'm a second-year Software Development major building toward a career in
-                    front-end and full-stack web development.
-                </p>
-                <a href="projects.html" class="btn btn-primary">View My Projects</a>
-                <a href="contact.html" class="btn btn-secondary">Contact Me</a>
-            </div>
+            <h1>Hi, my name is Hunter Benner</h1>
+            <p>
+                I'm a second-year Software Development student interested in front-end
+                design and developing Software as a Service, or SaaS applications. This
+                portfolio presents my current projects, technical skills, and engineering
+                background.
+            </p>
+            <a href="projects.html" class="btn btn-primary">View My Projects</a>
+            <a href="contact.html" class="link-secondary">Contact me</a>
         </section>
 
         <section class="about-section">
@@ -46,14 +52,14 @@
                 I'm a second-year Software Development major with a background in engineering
                 design. I spent four years in high school engineering and I'm certified in
                 Autodesk Inventor and Fusion 360, and now I'm building on that foundation with
-                web design and software development coursework in college. This site is where
+                web design and software development coursework at Broward College. This site is where
                 I'll be sharing the projects, skills, and resume I'm putting together as I work
                 toward a job as a junior developer.
             </p>
         </section>
     </main>
     <footer>
-        <p>&copy; 2026 Hunter Benner</p>
+        <p>&copy; 2026 Hunter Benner &middot; <a href="https://github.com/hunterbenner">GitHub</a> &middot; <a href="mailto:hunterbenner3@gmail.com">Email</a></p>
     </footer>
 </body>
 </html>

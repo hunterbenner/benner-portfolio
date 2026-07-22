@@ -2,36 +2,162 @@
 <!--
     Student Name: Hunter Benner
     File Name: resume.html
-    Date: 06/29/2026
+    Date: 07/21/2026
 -->
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume – Hunter Benner</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <meta name="description" content="Resume for Hunter Benner, Software Development student at Broward College with an engineering design background and Autodesk certifications.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- Part 4: keyboard-visible skip link on every page -->
+    <a class="skip-link" href="#main">Skip to main content</a>
     <header>
-        <h1>Hunter Benner</h1>
-        <p>Software Developer</p>
+        <div class="site-brand-block">
+            <p class="site-brand"><a href="index.html">Hunter Benner</a></p>
+            <p class="site-tagline">Software Developer</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <!-- Part 4: current page marked with aria-current="page" -->
+                <li><a href="resume.html" aria-current="page">Resume</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="skills.html">Skills</a></li>
-            <li><a href="resume.html">Resume</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-    <main>
-        <h2>Resume</h2>
-        <p>My work experience, education, and a downloadable resume will be available here.</p>
+    <main id="main" tabindex="-1">
+        <div class="page-intro">
+            <h1>Resume</h1>
+            <!-- Part 4: no PDF exists yet, so the page itself is the printable
+                 resume via the @media print styles in css/styles.css -->
+            <p class="print-note">
+                Need a copy? This page is print-ready: use your browser's Print option and
+                choose "Save as PDF."
+            </p>
+        </div>
+
+        <!-- Part 4: semantic resume layout - article for the resume,
+             aside for contact details and current goals -->
+        <div class="resume-layout">
+            <article class="resume-article" aria-label="Resume">
+                <section>
+                    <h2>Summary</h2>
+                    <p>
+                        Second-year Software Development major headed for front-end and
+                        full-stack work. Four years of engineering design built the habit of
+                        planning before building; coursework and a personal project are
+                        turning that habit toward the web.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Education</h2>
+                    <p class="resume-item-title">Broward College, Software Development major (second year)</p>
+                    <p>Coursework:</p>
+                    <ul>
+                        <li>COP1000C, Introduction to Computer Programming</li>
+                        <li>COP1334C, Introduction to C++</li>
+                        <li>COP1700C, Introduction to Database and MySQL</li>
+                        <li>CTS1831C, Web Authoring I</li>
+                        <li>CIS1513C, Project Management</li>
+                    </ul>
+                    <p class="resume-item-title">J.P. Taravella High School, 2020&ndash;2024</p>
+                    <ul>
+                        <li>Four-year engineering design program</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Technical Skills</h2>
+                    <ul>
+                        <li>HTML and CSS: semantic, responsive pages, including this site</li>
+                        <li>JavaScript: introductory; form validation and interface work</li>
+                        <li>Python and Flask: introductory; data endpoints for a personal project</li>
+                        <li>Git and GitHub: version control and GitHub Pages publishing</li>
+                        <li>Autodesk Inventor and Fusion 360: certified CAD tools</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Certifications</h2>
+                    <ul>
+                        <li>Autodesk Inventor Certified User</li>
+                        <li>Autodesk Fusion 360 Certified User</li>
+                        <li>Computer Literacy Certification</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Awards</h2>
+                    <ul>
+                        <li>Senior Award</li>
+                        <li>Bright Future Award</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Experience</h2>
+                    <p class="resume-item-title">Broward College, Student Life (August 2024&ndash;present)</p>
+                    <ul>
+                        <li>Hosted and organized campus events</li>
+                        <li>Worked with the student community day to day</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Volunteer Experience</h2>
+                    <p class="resume-item-title">City of Coconut Creek, Recreation Center Student Volunteer (2024)</p>
+                    <ul>
+                        <li>Assisted with setting up and cleaning city-wide events</li>
+                    </ul>
+                    <p class="resume-item-title">Broward County Public Schools, Student Volunteer (2023&ndash;2024)</p>
+                    <ul>
+                        <li>Assisted the engineering teacher with cleaning, arranging
+                            engineering equipment, and setting up classroom activities</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Projects</h2>
+                    <p class="resume-item-title">World, personal 3D globe project</p>
+                    <p>
+                        A 3D globe that shows weather, news, and markets for wherever you
+                        point it. Built with JavaScript, Three.js, and a Python and Flask
+                        server.
+                    </p>
+                    <p class="resume-item-title">Developer Portfolio, course project</p>
+                    <p>
+                        This site: five semantic HTML pages, one responsive stylesheet, a
+                        validated contact form, and multimedia, published with GitHub Pages.
+                    </p>
+                </section>
+            </article>
+
+            <aside class="resume-aside" aria-label="Contact and goals">
+                <h2>Contact</h2>
+                <ul>
+                    <li>Coral Springs, Florida</li>
+                    <li><a href="mailto:hunterbenner3@gmail.com">hunterbenner3@gmail.com</a></li>
+                    <li><a href="https://github.com/hunterbenner">github.com/hunterbenner</a></li>
+                </ul>
+
+                <h2>Current goals</h2>
+                <p>
+                    Finish my degree, keep shipping personal projects, and land a junior
+                    developer role where I can grow into full-stack work.
+                </p>
+            </aside>
+        </div>
     </main>
     <footer>
-        <p>&copy; 2026 Hunter Benner</p>
+        <p>&copy; 2026 Hunter Benner &middot; <a href="https://github.com/hunterbenner">GitHub</a> &middot; <a href="mailto:hunterbenner3@gmail.com">Email</a></p>
     </footer>
 </body>
 </html>

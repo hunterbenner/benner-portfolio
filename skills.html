@@ -2,36 +2,151 @@
 <!--
     Student Name: Hunter Benner
     File Name: skills.html
-    Date: 06/29/2026
+    Date: 07/21/2026
 -->
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skills – Hunter Benner</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <meta name="description" content="Hunter Benner's technical skills: web development, introductory programming, version control, and certified CAD tools, with a short audio introduction.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- Part 4: keyboard-visible skip link on every page -->
+    <a class="skip-link" href="#main">Skip to main content</a>
     <header>
-        <h1>Hunter Benner</h1>
-        <p>Software Developer</p>
+        <div class="site-brand-block">
+            <p class="site-brand"><a href="index.html">Hunter Benner</a></p>
+            <p class="site-tagline">Software Developer</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <!-- Part 4: current page marked with aria-current="page" -->
+                <li><a href="skills.html" aria-current="page">Skills</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="skills.html">Skills</a></li>
-            <li><a href="resume.html">Resume</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-    <main>
-        <h2>Skills</h2>
-        <p>My technical skills and tools will be listed here.</p>
+    <main id="main" tabindex="-1">
+        <div class="page-intro">
+            <h1>Skills</h1>
+            <p>
+                Every skill here is one I actually use, with where it comes from and where
+                I'm taking it next.
+            </p>
+        </div>
+
+        <!-- Part 4: accessible data table with caption, thead, tbody,
+             column headers, and row headers. Row striping comes from the
+             tbody tr:nth-of-type(even) rule in css/styles.css. -->
+        <section aria-label="Skills table">
+            <div class="table-scroll" role="region" aria-labelledby="skills-caption" tabindex="0">
+                <table class="skills-table">
+                    <caption id="skills-caption">Skills and tools at a glance</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Skill or Tool</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Experience Context</th>
+                            <th scope="col">Current Focus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">HTML</th>
+                            <td>Web development</td>
+                            <td>Course work and every page of this portfolio</td>
+                            <td>Semantic structure and accessibility</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">CSS</th>
+                            <td>Web development</td>
+                            <td>The shared stylesheet for this site</td>
+                            <td>Responsive layout and print styles</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">JavaScript</th>
+                            <td>Programming</td>
+                            <td>Introductory; this site's contact form and my globe project's interface</td>
+                            <td>Form validation and browser APIs</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Three.js</th>
+                            <td>Programming</td>
+                            <td>Learning it through my globe project's Earth scene</td>
+                            <td>Camera behavior and scene state</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Python and Flask</th>
+                            <td>Programming</td>
+                            <td>Introductory; data endpoints for my globe project</td>
+                            <td>Serving external data safely</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">C++</th>
+                            <td>Programming</td>
+                            <td>Introductory; Broward College coursework (COP1334C)</td>
+                            <td>Programming fundamentals</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">MySQL</th>
+                            <td>Databases</td>
+                            <td>Introductory; database coursework (COP1700C)</td>
+                            <td>Writing queries and database basics</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Git and GitHub</th>
+                            <td>Tools</td>
+                            <td>Version control and GitHub Pages publishing for this site</td>
+                            <td>Cleaner commits and history</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Autodesk Inventor</th>
+                            <td>Engineering design</td>
+                            <td>Certified; four years of high school engineering design</td>
+                            <td>Kept current as a design foundation</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Fusion 360</th>
+                            <td>Engineering design</td>
+                            <td>Certified; four years of high school engineering design</td>
+                            <td>Kept current as a design foundation</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Part 4: audio profile with fallback, download link, and transcript -->
+        <section class="audio-section" aria-label="Audio introduction">
+            <h2>A short introduction, in my own voice</h2>
+            <audio controls preload="metadata">
+                <source src="media/profile-introduction.m4a" type="audio/mp4">
+                Your browser does not support HTML audio.
+                <a href="media/profile-introduction.m4a" download>Download the audio introduction (M4A)</a> instead.
+            </audio>
+            <p class="media-note">
+                If the player doesn't work in your browser, you can
+                <a href="media/profile-introduction.m4a" download>download the audio introduction (M4A)</a> directly.
+            </p>
+            <div class="transcript">
+                <h3>Audio transcript</h3>
+                <p>
+                    "Hi, my name is Hunter Benner. I'm a second-year Software Development
+                    student interested in front-end design and developing Software as a
+                    Service, or SaaS, applications. This portfolio presents my current
+                    projects, technical skills, and engineering background."
+                </p>
+            </div>
+        </section>
     </main>
     <footer>
-        <p>&copy; 2026 Hunter Benner</p>
+        <p>&copy; 2026 Hunter Benner &middot; <a href="https://github.com/hunterbenner">GitHub</a> &middot; <a href="mailto:hunterbenner3@gmail.com">Email</a></p>
     </footer>
 </body>
 </html>
