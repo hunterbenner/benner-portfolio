@@ -2,18 +2,23 @@
 <!--
     Student Name: Hunter Benner
     File Name: template.html
-    Date: 07/21/2026
-    Description: This is the master template for my portfolio pages. It is
-                 not part of the website and is not linked in the navigation menu.
+    Date: 07/28/2026
+    Description: Master template documentation page. Every page of the
+                 portfolio starts from the structure shown here. It is a
+                 course document, linked from the footer, not the main
+                 navigation.
 -->
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Title – Hunter Benner</title>
-    <meta name="description" content="Describe this page in one sentence.">
+    <title>Master Template – Hunter Benner</title>
+    <meta name="description" content="The master template every page of Hunter Benner's portfolio is built from, with notes on the shared structure and how to start a new page.">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Part 5: original HB favicon; PNG fallback for browsers without SVG icon support -->
+    <link rel="icon" href="images/favicon.png" type="image/png" sizes="48x48">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to main content</a>
@@ -24,7 +29,7 @@
         </div>
         <nav>
             <ul>
-                <!-- Add aria-current="page" to the link for the current page -->
+                <!-- On a real page, the current link gets aria-current="page" -->
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="skills.html">Skills</a></li>
@@ -35,11 +40,50 @@
     </header>
     <main id="main" tabindex="-1">
         <div class="page-intro">
-            <h1>Page Title</h1>
+            <h1>Master Template</h1>
+            <p>
+                This page is the master template for my portfolio. All five site pages
+                started as a copy of this file, so the structure you see here is the
+                structure of the whole site.
+            </p>
         </div>
+
+        <section>
+            <h2>What every page shares</h2>
+            <ul class="template-notes">
+                <li>A head with the charset, viewport, and description meta tags, the two
+                    Google Fonts, the shared stylesheet, and the HB favicon.</li>
+                <li>A skip link as the first element, so keyboard users can jump straight
+                    to the main content.</li>
+                <li>A header with my name linked back to the home page, and the five-link
+                    navigation menu.</li>
+                <li>One <code>main</code> region with the page's own <code>h1</code> inside it.</li>
+                <li>A footer with my copyright line, GitHub and email links, and links to
+                    the course documents.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>How I start a new page from it</h2>
+            <ol class="template-notes">
+                <li>Copy this file and rename it, all lowercase with no spaces.</li>
+                <li>Update the title, the description meta tag, and the comment block at
+                    the top.</li>
+                <li>Move <code>aria-current="page"</code> to the matching navigation
+                    link so the red underline marks the right page.</li>
+                <li>Replace this documentation with the page's own heading and content.</li>
+            </ol>
+            <p>
+                Keeping every page on one template is why the site only needs a single
+                stylesheet: the shared parts are styled once, and each page only adds
+                the rules for its own content.
+            </p>
+        </section>
     </main>
     <footer>
         <p>&copy; 2026 Hunter Benner &middot; <a href="https://github.com/hunterbenner">GitHub</a> &middot; <a href="mailto:hunterbenner3@gmail.com">Email</a></p>
+        <!-- Part 5: course documents linked here instead of the main navigation -->
+        <p class="footer-docs">Course documents: <a href="proposal.html">Proposal</a> &middot; <a href="sitemap.html">Site Map</a> &middot; <a href="wireframes/wireframes.html">Wireframes</a> &middot; <a href="template.html">Master Template</a></p>
     </footer>
 </body>
 </html>

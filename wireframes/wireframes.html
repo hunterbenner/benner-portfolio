@@ -2,15 +2,26 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wireframes - Hunter Benner Portfolio</title>
+<link rel="icon" href="../images/favicon.png" type="image/png" sizes="48x48">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <style>
   /* reset default browser spacing */
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: Arial, Helvetica, sans-serif; background: #ffffff; padding: 24px; }
 
   /* each wireframe sheet stays hidden until picked in the url */
-  .sheet { display: none; }
+  /* frames are fixed-width spec sheets, so each sheet scrolls
+     sideways on its own instead of stretching the whole page */
+  .sheet { display: none; overflow-x: auto; }
   .sheet.active { display: block; }
+
+  .back-link { font-size: 13px; margin-bottom: 20px; }
+  .back-link a { color: #0f3460; }
+
+  .page-title { font-size: 26px; color: #111; margin-bottom: 4px; }
+  .page-sub { font-size: 13px; color: #555; margin-bottom: 28px; }
 
   /* big label at the top of each sheet */
   .sheet-title {
@@ -96,7 +107,7 @@
   .margin-notes { width: 400px; flex-shrink: 0; }
   .note { border: 2px solid #0f3460; background: #eef2ff; padding: 12px 14px;
     margin-bottom: 14px; font-size: 12px; line-height: 1.55; border-radius: 4px; }
-  .note h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
+  .note h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
     color: #0f3460; margin-bottom: 8px; }
   .note ul { padding-left: 18px; }
   .note li { margin-bottom: 5px; }
@@ -107,36 +118,14 @@
 </head>
 <body>
 
-<!-- shared note boxes that get copied into every sheet by the script at the bottom -->
-<template id="tpl-typography">
-  <div class="note">
-    <h4>&#9998; Typography Spec</h4>
-    <ul>
-      <li><b>Headings:</b> Montserrat 700 (google font), fallback <code>Arial, sans-serif</code></li>
-      <li><b>Body:</b> Open Sans 400, 16px, line height 1.7</li>
-      <li><b>H1:</b> <span class="h1size"></span> &nbsp;|&nbsp; <b>H2:</b> <span class="h2size"></span></li>
-      <li><b>Nav + buttons:</b> Montserrat 600, 14px, uppercase, 1px letter spacing</li>
-    </ul>
-  </div>
-</template>
+<p class="back-link"><a href="../index.html">Back to the portfolio home page</a></p>
 
-<template id="tpl-colors">
-  <div class="note">
-    <h4>&#127912; Color Scheme (hex)</h4>
-    <ul>
-      <li><span class="swatch" style="background:#1a1a2e"></span><code>#1a1a2e</code> dark navy: header, footer, nav</li>
-      <li><span class="swatch" style="background:#0f3460"></span><code>#0f3460</code> deep blue: headings, links, borders</li>
-      <li><span class="swatch" style="background:#e94560"></span><code>#e94560</code> coral: CTA buttons, hover + focus</li>
-      <li><span class="swatch" style="background:#f4f4f4"></span><code>#f4f4f4</code> light gray: page background</li>
-      <li><span class="swatch" style="background:#ffffff"></span><code>#ffffff</code> white: content cards</li>
-      <li><span class="swatch" style="background:#222222"></span><code>#222222</code> body text, 15.9:1 contrast on white</li>
-    </ul>
-  </div>
-</template>
+<h1 class="page-title">Wireframes - Hunter Benner Portfolio</h1>
+<p class="page-sub">Ten annotated wireframe sheets: mobile and desktop versions of all five pages.</p>
 
 <!-- 1. home page, mobile version -->
 <div class="sheet" id="home-mobile">
-  <div class="sheet-title">1. Home (index.html): Mobile Wireframe</div>
+  <h2 class="sheet-title">1. Home (index.html): Mobile Wireframe</h2>
   <div class="sheet-sub">Viewport: 375px &bull; Single-column, mobile-first layout</div>
   <div class="layout">
     <div class="frame mobile-frame">
@@ -171,7 +160,7 @@
     </div>
     <div class="margin-notes">
       <div class="note">
-        <h4>&#9634; White Space Plan</h4>
+        <h3>&#9634; White Space Plan</h3>
         <ul>
           <li><b>active:</b> 24px between page regions</li>
           <li><b>active:</b> 16px gap between the CTA buttons</li>
@@ -187,7 +176,7 @@
 
 <!-- 2. home page, desktop version -->
 <div class="sheet" id="home-desktop">
-  <div class="sheet-title">2. Home (index.html): Desktop Wireframe</div>
+  <h2 class="sheet-title">2. Home (index.html): Desktop Wireframe</h2>
   <div class="sheet-sub">Viewport: 1200px+ &bull; Multi-column layout (min-width: 768px media query)</div>
   <div class="layout">
     <div class="frame desktop-frame">
@@ -225,7 +214,7 @@
     </div>
     <div class="margin-notes">
       <div class="note">
-        <h4>&#9634; White Space Plan</h4>
+        <h3>&#9634; White Space Plan</h3>
         <ul>
           <li><b>active:</b> 60px padding around the hero</li>
           <li><b>active:</b> 24px gaps between project cards</li>
@@ -241,7 +230,7 @@
 
 <!-- 3. projects page, mobile version -->
 <div class="sheet" id="projects-mobile">
-  <div class="sheet-title">3. Projects (projects.html): Mobile Wireframe</div>
+  <h2 class="sheet-title">3. Projects (projects.html): Mobile Wireframe</h2>
   <div class="sheet-sub">Viewport: 375px &bull; Single-column stacked project cards</div>
   <div class="layout">
     <div class="frame mobile-frame">
@@ -274,7 +263,7 @@
     </div>
     <div class="margin-notes">
       <div class="note">
-        <h4>&#9634; White Space Plan</h4>
+        <h3>&#9634; White Space Plan</h3>
         <ul>
           <li><b>active:</b> 20px between stacked cards</li>
           <li><b>active:</b> 12px padding inside each card</li>
@@ -289,7 +278,7 @@
 
 <!-- 4. projects page, desktop version -->
 <div class="sheet" id="projects-desktop">
-  <div class="sheet-title">4. Projects (projects.html): Desktop Wireframe</div>
+  <h2 class="sheet-title">4. Projects (projects.html): Desktop Wireframe</h2>
   <div class="sheet-sub">Viewport: 1200px+ &bull; 3-column CSS Grid of project cards</div>
   <div class="layout">
     <div class="frame desktop-frame">
@@ -318,7 +307,7 @@
     </div>
     <div class="margin-notes">
       <div class="note">
-        <h4>&#9634; White Space Plan</h4>
+        <h3>&#9634; White Space Plan</h3>
         <ul>
           <li><b>active:</b> 24px grid gap, both directions</li>
           <li><b>active:</b> 48px under the page heading</li>
@@ -333,7 +322,7 @@
 
 <!-- 5. skills page, mobile version -->
 <div class="sheet" id="skills-mobile">
-  <div class="sheet-title">5. Skills (skills.html): Mobile Wireframe</div>
+  <h2 class="sheet-title">5. Skills (skills.html): Mobile Wireframe</h2>
   <div class="sheet-sub">Viewport: 375px &bull; Single-column stacked skill categories</div>
   <div class="layout">
     <div class="frame mobile-frame">
@@ -370,7 +359,7 @@
     </div>
     <div class="margin-notes">
       <div class="note">
-        <h4>&#9634; White Space Plan</h4>
+        <h3>&#9634; White Space Plan</h3>
         <ul>
           <li><b>active:</b> 20px between category cards</li>
           <li><b>active:</b> 10px between skill bars</li>
@@ -385,7 +374,7 @@
 
 <!-- 6. skills page, desktop version -->
 <div class="sheet" id="skills-desktop">
-  <div class="sheet-title">6. Skills (skills.html): Desktop Wireframe</div>
+  <h2 class="sheet-title">6. Skills (skills.html): Desktop Wireframe</h2>
   <div class="sheet-sub">Viewport: 1200px+ &bull; 3-column grid of skill category cards</div>
   <div class="layout">
     <div class="frame desktop-frame">
@@ -425,7 +414,7 @@
     </div>
     <div class="margin-notes">
       <div class="note">
-        <h4>&#9634; White Space Plan</h4>
+        <h3>&#9634; White Space Plan</h3>
         <ul>
           <li><b>active:</b> 24px gaps between the 3 columns</li>
           <li><b>active:</b> 48px below the heading</li>
@@ -440,7 +429,7 @@
 
 <!-- 7. resume page, mobile version -->
 <div class="sheet" id="resume-mobile">
-  <div class="sheet-title">7. Resume (resume.html): Mobile Wireframe</div>
+  <h2 class="sheet-title">7. Resume (resume.html): Mobile Wireframe</h2>
   <div class="sheet-sub">Viewport: 375px &bull; Single column; download button pinned near top</div>
   <div class="layout">
     <div class="frame mobile-frame">
@@ -469,7 +458,7 @@
     </div>
     <div class="margin-notes">
       <div class="note">
-        <h4>&#9634; White Space Plan</h4>
+        <h3>&#9634; White Space Plan</h3>
         <ul>
           <li><b>active:</b> 20px above and below the download button</li>
           <li><b>active:</b> 24px between resume sections</li>
@@ -484,7 +473,7 @@
 
 <!-- 8. resume page, desktop version -->
 <div class="sheet" id="resume-desktop">
-  <div class="sheet-title">8. Resume (resume.html): Desktop Wireframe</div>
+  <h2 class="sheet-title">8. Resume (resume.html): Desktop Wireframe</h2>
   <div class="sheet-sub">Viewport: 1200px+ &bull; Two-column: fixed sidebar + main timeline</div>
   <div class="layout">
     <div class="frame desktop-frame">
@@ -517,7 +506,7 @@
     </div>
     <div class="margin-notes">
       <div class="note">
-        <h4>&#9634; White Space Plan</h4>
+        <h3>&#9634; White Space Plan</h3>
         <ul>
           <li><b>active:</b> 32px gap between sidebar and main column</li>
           <li><b>active:</b> 20px between timeline entries, 24px padding inside</li>
@@ -532,7 +521,7 @@
 
 <!-- 9. contact page, mobile version -->
 <div class="sheet" id="contact-mobile">
-  <div class="sheet-title">9. Contact (contact.html): Mobile Wireframe</div>
+  <h2 class="sheet-title">9. Contact (contact.html): Mobile Wireframe</h2>
   <div class="sheet-sub">Viewport: 375px &bull; Single column: form first, then direct links</div>
   <div class="layout">
     <div class="frame mobile-frame">
@@ -560,7 +549,7 @@
     </div>
     <div class="margin-notes">
       <div class="note">
-        <h4>&#9634; White Space Plan</h4>
+        <h3>&#9634; White Space Plan</h3>
         <ul>
           <li><b>active:</b> 16px between form fields, labels 4px above inputs</li>
           <li><b>active:</b> 20px above the send button</li>
@@ -575,7 +564,7 @@
 
 <!-- 10. contact page, desktop version -->
 <div class="sheet" id="contact-desktop">
-  <div class="sheet-title">10. Contact (contact.html): Desktop Wireframe</div>
+  <h2 class="sheet-title">10. Contact (contact.html): Desktop Wireframe</h2>
   <div class="sheet-sub">Viewport: 1200px+ &bull; Two-column: form (60%) + contact info (40%)</div>
   <div class="layout">
     <div class="frame desktop-frame">
@@ -619,7 +608,7 @@
     </div>
     <div class="margin-notes">
       <div class="note">
-        <h4>&#9634; White Space Plan</h4>
+        <h3>&#9634; White Space Plan</h3>
         <ul>
           <li><b>active:</b> 32px gap between form and info columns</li>
           <li><b>active:</b> name and email share a row, 12px gap, 16px between other fields</li>
@@ -631,6 +620,33 @@
     </div>
   </div>
 </div>
+
+<!-- shared note boxes that get copied into every sheet by the script at the bottom -->
+<template id="tpl-typography">
+  <div class="note">
+    <h3>&#9998; Typography Spec</h3>
+    <ul>
+      <li><b>Headings:</b> Montserrat 700 (google font), fallback <code>Arial, sans-serif</code></li>
+      <li><b>Body:</b> Open Sans 400, 16px, line height 1.7</li>
+      <li><b>H1:</b> <span class="h1size"></span> &nbsp;|&nbsp; <b>H2:</b> <span class="h2size"></span></li>
+      <li><b>Nav + buttons:</b> Montserrat 600, 14px, uppercase, 1px letter spacing</li>
+    </ul>
+  </div>
+</template>
+
+<template id="tpl-colors">
+  <div class="note">
+    <h3>&#127912; Color Scheme (hex)</h3>
+    <ul>
+      <li><span class="swatch" style="background:#1a1a2e"></span><code>#1a1a2e</code> dark navy: header, footer, nav</li>
+      <li><span class="swatch" style="background:#0f3460"></span><code>#0f3460</code> deep blue: headings, links, borders</li>
+      <li><span class="swatch" style="background:#e94560"></span><code>#e94560</code> coral: CTA buttons, hover + focus</li>
+      <li><span class="swatch" style="background:#f4f4f4"></span><code>#f4f4f4</code> light gray: page background</li>
+      <li><span class="swatch" style="background:#ffffff"></span><code>#ffffff</code> white: content cards</li>
+      <li><span class="swatch" style="background:#222222"></span><code>#222222</code> body text, 15.9:1 contrast on white</li>
+    </ul>
+  </div>
+</template>
 
 <script>
   // copy the shared typography and color notes into every sheet

@@ -9,6 +9,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site Map – Hunter Benner Portfolio</title>
+    <link rel="icon" href="images/favicon.png" type="image/png" sizes="48x48">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -28,6 +30,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            /* The diagram is a fixed-width drawing, so it scrolls
+               sideways on small screens instead of breaking the page */
+            max-width: 100%;
+            overflow-x: auto;
+            padding-bottom: 8px;
         }
 
         .node {
@@ -65,6 +72,15 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        .back-link {
+            margin-top: 40px;
+            font-size: 0.9em;
+        }
+
+        .back-link a {
+            color: #0f3460;
         }
 
         .horizontal-line {
@@ -118,6 +134,8 @@
     </div>
 
 </div>
+
+<p class="back-link"><a href="index.html">Back to the portfolio home page</a></p>
 
 </body>
 </html>

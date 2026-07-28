@@ -82,6 +82,8 @@ header {
     font-weight: 700;
     font-size: 1.5em;
     text-decoration: none;
+    /* Part 5: faint text-shadow lifts the brand off the navy bar */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .site-brand a:hover {
@@ -89,7 +91,10 @@ header {
 }
 
 .site-tagline {
-    color: #cfd3e0;
+    /* Part 5: white knocked back with opacity instead of a second
+       grey; still about 13:1 contrast on the navy header. */
+    color: #fff;
+    opacity: 0.8;
     letter-spacing: 1px;
     font-size: 0.85em;
 }
@@ -138,6 +143,9 @@ main {
     padding: 28px 22px;
     background-color: #fff;
     border-radius: 8px;
+    /* Part 5: one tight, navy-tinted shadow to seat the content
+       card on the grey page; no big blurred halos. */
+    box-shadow: 0 2px 6px rgba(26, 26, 46, 0.12);
 }
 
 main:focus {
@@ -167,6 +175,13 @@ footer {
 
 footer a {
     color: #0f3460;
+}
+
+/* Part 5: quiet second footer line pointing at the course documents
+   (proposal, site map, wireframes, master template). */
+.footer-docs {
+    margin-top: 4px;
+    font-size: 0.95em;
 }
 
 /* ----- Home page hero ----- */
@@ -235,6 +250,53 @@ footer a {
 
 .about-section p {
     max-width: 68ch;
+}
+
+/* ----- Home page: section links grid (Part 5) -----
+   Mobile-first CSS Grid: one column here, two columns at 768px,
+   four columns at 1024px (see the media queries below). */
+.home-links {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid #eee;
+}
+
+.home-links h2 {
+    margin-bottom: 12px;
+}
+
+.home-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    list-style: none;
+}
+
+.home-grid li {
+    padding: 18px 20px;
+    background-color: #eef2ff;
+    border-radius: 8px;
+}
+
+.home-grid h3 {
+    font-size: 1.05em;
+    margin-bottom: 4px;
+}
+
+.home-grid h3 a {
+    color: #0f3460;
+    text-decoration: none;
+}
+
+.home-grid h3 a:hover {
+    color: #c9184a;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.home-grid p {
+    font-size: 0.95em;
+    color: #444;
 }
 
 /* ----- Projects page: editorial article layout (Part 4) ----- */
@@ -404,6 +466,13 @@ footer a {
 
 .skills-table thead th {
     background-color: #1a1a2e;
+    /* A very slight surface change keeps the required CSS gradient
+       contained to the data table instead of coloring the site header. */
+    background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.04),
+        rgba(255, 255, 255, 0)
+    );
     color: #fff;
     font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 600;
@@ -519,6 +588,22 @@ tbody tr:nth-of-type(even) {
 .print-note {
     font-size: 0.9em;
     color: #555;
+}
+
+/* ----- Master template page (Part 5 course document) ----- */
+.template-notes {
+    padding-left: 22px;
+    margin: 6px 0 14px;
+    max-width: 70ch;
+}
+
+.template-notes li {
+    margin-bottom: 4px;
+}
+
+.template-notes + p {
+    max-width: 70ch;
+    margin-bottom: 24px;
 }
 
 /* ----- Contact page: form layout (Part 4) ----- */
@@ -643,7 +728,9 @@ tbody tr:nth-of-type(even) {
     max-width: 50ch;
 }
 
-/* ----- Responsive layout: tablet and desktop ----- */
+/* ----- Responsive layout: tablet (Part 5 mobile-first breakpoints) -----
+   Base styles above are the one-column mobile layout; this query
+   introduces the multi-column layouts at tablet width. */
 @media (min-width: 768px) {
     header {
         flex-direction: row;
@@ -700,6 +787,30 @@ tbody tr:nth-of-type(even) {
         grid-template-columns: 3fr 2fr;
         gap: 40px;
     }
+
+    /* Home links: one column becomes a 2 x 2 grid on tablets */
+    .home-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ----- Responsive layout: desktop ----- */
+@media (min-width: 1024px) {
+    main {
+        padding: 48px 64px;
+    }
+
+    /* Home links: the 2 x 2 tablet grid becomes a single row of four */
+    .home-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    /* More air between the two grid columns on wide screens */
+    .resume-layout,
+    .contact-layout {
+        gap: 56px;
+    }
 }
 
 /* ----- Reduced motion (Part 4 shared requirement) -----
@@ -732,6 +843,7 @@ tbody tr:nth-of-type(even) {
     .btn,
     .link-secondary,
     .print-note,
+    .footer-docs,
     .contact-form button[type="submit"] {
         display: none;
     }
